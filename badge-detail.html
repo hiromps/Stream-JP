@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream JP - バッジ詳細</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="badge-detail.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <h1 data-i18n="app.title">Stream JP</h1>
+                    <p class="subtitle" data-i18n="badge.detail.subtitle">バッジ詳細</p>
+                </div>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ja">日本語</button>
+                    <button class="lang-btn" data-lang="en">English</button>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link" data-i18n="nav.badges">バッジページ</a>
+                    <a href="emotes.html" class="nav-link" data-i18n="nav.emotes">エモートページ</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p data-i18n="loading.message">バッジを読み込み中...</p>
+            </div>
+            
+            <div id="error-message" class="error-message" style="display: none;"></div>
+            
+            <div class="badge-detail-container" id="badge-detail-container" style="display: none;">
+                <!-- バッジ詳細メインセクション -->
+                <div class="badge-main-section">
+                    <div class="badge-image-section">
+                        <div class="badge-image-container">
+                            <img id="badge-main-image" class="badge-main-image" alt="Badge Image">
+                        </div>
+                        <div class="badge-resolution-selector">
+                            <button class="resolution-btn active" data-resolution="1x">1x</button>
+                            <button class="resolution-btn" data-resolution="2x">2x</button>
+                            <button class="resolution-btn" data-resolution="4x">4x</button>
+                        </div>
+                    </div>
+                    
+                    <div class="badge-info-section">
+                        <h1 id="badge-title" class="badge-detail-title"></h1>
+                        <div class="badge-meta-info">
+                            <div class="meta-item">
+                                <span class="meta-label" data-i18n="badge.setId">セットID:</span>
+                                <span id="badge-set-id" class="meta-value"></span>
+                            </div>
+                            <div class="meta-item" id="badge-added-date-container" style="display: none;">
+                                <span class="meta-label" data-i18n="badge.addedDate">追加日:</span>
+                                <span id="badge-added-date" class="meta-value added-date"></span>
+                            </div>
+                            <div class="meta-item" id="badge-title-meta" style="display: none;">
+                                <span class="meta-label" data-i18n="badge.title">タイトル:</span>
+                                <span id="badge-title-value" class="meta-value"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- バッジの入手法 -->
+                <div class="badge-obtain-section" id="badge-obtain-section" style="display: none;">
+                    <h2 data-i18n="badge.howToObtain">入手方法</h2>
+                    <div class="obtain-info-container">
+                        <div class="obtain-method" id="obtain-method">
+                            <div class="obtain-icon">🎯</div>
+                            <div class="obtain-details">
+                                <h3 class="obtain-title" id="obtain-title"></h3>
+                                <p class="obtain-description" id="obtain-description"></p>
+                                <div class="obtain-requirements" id="obtain-requirements" style="display: none;">
+                                    <h4 data-i18n="badge.requirements">必要条件:</h4>
+                                    <ul id="requirements-list"></ul>
+                                </div>
+                                <div class="obtain-availability" id="obtain-availability" style="display: none;">
+                                    <span class="availability-label" data-i18n="badge.availability">利用可能性:</span>
+                                    <span class="availability-status" id="availability-status"></span>
+                                </div>
+                                <div class="obtain-url" id="obtain-url" style="display: none;">
+                                    <a id="obtain-link" href="#" target="_blank" class="obtain-link" data-i18n="badge.moreInfo">詳細情報</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- バッジバリエーション -->
+                <div class="badge-variations-section" id="badge-variations-section" style="display: none;">
+                    <h2 data-i18n="badge.variations">バリエーション</h2>
+                    <div class="badge-variations-grid" id="badge-variations-grid"></div>
+                </div>
+
+                <!-- 戻るボタン -->
+                <div class="back-button-section">
+                    <button class="back-button" onclick="window.history.back()" data-i18n="badge.back">戻る</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><span data-i18n="footer.copyright">&copy; 2025 Stream JP.</span> <span data-i18n="footer.description">Twitch APIを使用して最新のグローバルバッジを表示しています。</span></p>
+        </div>
+    </footer>
+
+    <script src="badge-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream JP - Twitchグローバルバッジ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <h1 data-i18n="app.title">Stream JP</h1>
+                    <p class="subtitle" data-i18n="app.subtitle">Twitchグローバルバッジ一覧</p>
+                </div>
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="ja">日本語</button>
+                    <button class="lang-btn" data-lang="en">English</button>
+                </div>
+                <div class="nav-menu">
+                    <a href="emotes.html" class="nav-link" data-i18n="nav.emotes">エモートページ</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p data-i18n="loading.message">バッジを読み込み中...</p>
+            </div>
+            
+            <div id="error-message" class="error-message" style="display: none;"></div>
+            
+            <div class="sort-controls" id="sort-controls" style="display: none;">
+                <label for="sort-select" data-i18n="sort.label">並び替え: </label>
+                <select id="sort-select" class="sort-select">
+                    <option value="newest" data-i18n="sort.newest" selected>新しい順</option>
+                    <option value="oldest" data-i18n="sort.oldest">古い順</option>
+                </select>
+            </div>
+            
+            <div id="badge-container" class="badge-container">
+                <!-- バッジがここに動的に挿入されます -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><span data-i18n="footer.copyright">&copy; 2025 Stream JP.</span> <span data-i18n="footer.description">Twitch APIを使用して最新のグローバルバッジを表示しています。</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

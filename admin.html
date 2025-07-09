@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream JP - バッジ管理</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            background-color: #1f1f23;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #2a2a2d;
+        }
+        
+        .admin-section {
+            background-color: #1f1f23;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #2a2a2d;
+        }
+        
+        .admin-section h2 {
+            color: #efeff1;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #9147ff;
+            padding-bottom: 10px;
+        }
+        
+        .badge-item {
+            background-color: #0e0e10;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #2a2a2d;
+        }
+        
+        .badge-item h3 {
+            color: #efeff1;
+            margin-bottom: 10px;
+        }
+        
+        .badge-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .info-item {
+            color: #adadb8;
+            font-size: 14px;
+        }
+        
+        .info-item strong {
+            color: #efeff1;
+        }
+        
+        .badge-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .admin-btn {
+            background-color: #9147ff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .admin-btn:hover {
+            background-color: #7c3aed;
+        }
+        
+        .admin-btn.danger {
+            background-color: #dc3545;
+        }
+        
+        .admin-btn.danger:hover {
+            background-color: #c82333;
+        }
+        
+        .admin-btn.success {
+            background-color: #28a745;
+        }
+        
+        .admin-btn.success:hover {
+            background-color: #218838;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background-color: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+        
+        .status-researching {
+            background-color: rgba(0, 123, 255, 0.2);
+            color: #007bff;
+        }
+        
+        .status-approved {
+            background-color: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+        }
+        
+        .research-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background-color: #1f1f23;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid #2a2a2d;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-header h3 {
+            color: #efeff1;
+            margin: 0;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: #adadb8;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #efeff1;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            background-color: #0e0e10;
+            color: #efeff1;
+            border: 1px solid #2a2a2d;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .requirements-list {
+            background-color: #0e0e10;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .requirement-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .requirement-item input {
+            flex: 1;
+            margin-right: 10px;
+        }
+        
+        .remove-req-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .add-req-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .no-badges {
+            text-align: center;
+            color: #adadb8;
+            padding: 40px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <h1>Stream JP</h1>
+                    <p class="subtitle">バッジ管理システム</p>
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">バッジページ</a>
+                    <a href="emotes.html" class="nav-link">エモートページ</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="admin-container">
+            <div class="admin-header">
+                <h1>新しいバッジ管理システム</h1>
+                <p>このシステムは自動的に新しいTwitchグローバルバッジを検出し、入手方法を調査します。</p>
+                <div style="margin-top: 15px;">
+                    <button class="admin-btn" onclick="forceCheck()">手動チェック実行</button>
+                    <span id="last-checked" style="color: #adadb8; margin-left: 15px;"></span>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h2>承認待ちバッジ</h2>
+                <div id="pending-badges-container">
+                    <div class="no-badges">承認待ちのバッジはありません</div>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h2>システムログ</h2>
+                <div id="system-log" style="background-color: #0e0e10; padding: 15px; border-radius: 4px; font-family: monospace; font-size: 12px; color: #adadb8; max-height: 200px; overflow-y: auto;">
+                    システム待機中...
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 調査モーダル -->
+    <div id="research-modal" class="research-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>バッジ情報編集</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="badge-form">
+                <div class="form-group">
+                    <label>バッジID</label>
+                    <input type="text" id="badge-id" readonly>
+                </div>
+                <div class="form-group">
+                    <label>バッジ名</label>
+                    <input type="text" id="badge-name" required>
+                </div>
+                <div class="form-group">
+                    <label>説明（日本語）</label>
+                    <textarea id="description-ja" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>説明（英語）</label>
+                    <textarea id="description-en" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>必要条件（日本語）</label>
+                    <div class="requirements-list" id="requirements-ja"></div>
+                    <button type="button" class="add-req-btn" onclick="addRequirement('ja')">条件を追加</button>
+                </div>
+                <div class="form-group">
+                    <label>必要条件（英語）</label>
+                    <div class="requirements-list" id="requirements-en"></div>
+                    <button type="button" class="add-req-btn" onclick="addRequirement('en')">Add Requirement</button>
+                </div>
+                <div class="form-group">
+                    <label>利用可能性</label>
+                    <select id="availability">
+                        <option value="available">利用可能</option>
+                        <option value="limited">期間限定</option>
+                        <option value="unavailable">入手不可</option>
+                        <option value="unknown">不明</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>参照URL</label>
+                    <input type="url" id="reference-url">
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="button" class="admin-btn success" onclick="approveBadge()">承認</button>
+                    <button type="button" class="admin-btn" onclick="closeModal()">キャンセル</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let currentBadge = null;
+
+        async function loadPendingBadges() {
+            try {
+                const response = await fetch('/api/admin/pending-badges');
+                const data = await response.json();
+                
+                updateLastChecked(data.last_checked);
+                displayPendingBadges(data.pending_badges);
+                
+            } catch (error) {
+                console.error('Error loading pending badges:', error);
+                logMessage('エラー: 承認待ちバッジの取得に失敗しました');
+            }
+        }
+
+        function updateLastChecked(lastChecked) {
+            const element = document.getElementById('last-checked');
+            const date = new Date(lastChecked);
+            element.textContent = `最終チェック: ${date.toLocaleString('ja-JP')}`;
+        }
+
+        function displayPendingBadges(badges) {
+            const container = document.getElementById('pending-badges-container');
+            
+            if (badges.length === 0) {
+                container.innerHTML = '<div class="no-badges">承認待ちのバッジはありません</div>';
+                return;
+            }
+
+            container.innerHTML = badges.map(badge => `
+                <div class="badge-item">
+                    <h3>${badge.name || badge.id}</h3>
+                    <div class="badge-info">
+                        <div class="info-item">
+                            <strong>ID:</strong> ${badge.id}
+                        </div>
+                        <div class="info-item">
+                            <strong>検出日:</strong> ${new Date(badge.discovered_at).toLocaleString('ja-JP')}
+                        </div>
+                        <div class="info-item">
+                            <strong>追加日:</strong> ${badge.added_date || '不明'}
+                        </div>
+                        <div class="info-item">
+                            <strong>ステータス:</strong> 
+                            <span class="status-indicator status-pending">承認待ち</span>
+                        </div>
+                    </div>
+                    <div class="badge-actions">
+                        <button class="admin-btn" onclick="openResearchModal('${badge.id}')">編集・承認</button>
+                        <button class="admin-btn danger" onclick="deleteBadge('${badge.id}')">削除</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openResearchModal(badgeId) {
+            // バッジ情報を取得して編集モーダルを開く
+            fetch('/api/admin/pending-badges')
+                .then(response => response.json())
+                .then(data => {
+                    const badge = data.pending_badges.find(b => b.id === badgeId);
+                    if (badge) {
+                        currentBadge = badge;
+                        populateModal(badge);
+                        document.getElementById('research-modal').style.display = 'block';
+                    }
+                });
+        }
+
+        function populateModal(badge) {
+            document.getElementById('badge-id').value = badge.id;
+            document.getElementById('badge-name').value = badge.name || badge.id;
+            
+            const basicInfo = badge.basic_info || {};
+            document.getElementById('description-ja').value = basicInfo.ja?.description || '';
+            document.getElementById('description-en').value = basicInfo.en?.description || '';
+            
+            // 必要条件の設定
+            populateRequirements('ja', basicInfo.ja?.requirements || []);
+            populateRequirements('en', basicInfo.en?.requirements || []);
+            
+            document.getElementById('availability').value = basicInfo.ja?.availability || 'unknown';
+            document.getElementById('reference-url').value = basicInfo.ja?.url || badge.url || '';
+        }
+
+        function populateRequirements(lang, requirements) {
+            const container = document.getElementById(`requirements-${lang}`);
+            container.innerHTML = requirements.map((req, index) => `
+                <div class="requirement-item">
+                    <input type="text" value="${req}" data-lang="${lang}" data-index="${index}">
+                    <button type="button" class="remove-req-btn" onclick="removeRequirement(this)">削除</button>
+                </div>
+            `).join('');
+        }
+
+        function addRequirement(lang) {
+            const container = document.getElementById(`requirements-${lang}`);
+            const div = document.createElement('div');
+            div.className = 'requirement-item';
+            div.innerHTML = `
+                <input type="text" value="" data-lang="${lang}">
+                <button type="button" class="remove-req-btn" onclick="removeRequirement(this)">削除</button>
+            `;
+            container.appendChild(div);
+        }
+
+        function removeRequirement(button) {
+            button.parentElement.remove();
+        }
+
+        function closeModal() {
+            document.getElementById('research-modal').style.display = 'none';
+            currentBadge = null;
+        }
+
+        async function approveBadge() {
+            if (!currentBadge) return;
+
+            const formData = {
+                ja: {
+                    title: document.getElementById('badge-name').value,
+                    description: document.getElementById('description-ja').value,
+                    requirements: Array.from(document.querySelectorAll('#requirements-ja input')).map(input => input.value).filter(v => v),
+                    availability: document.getElementById('availability').value,
+                    url: document.getElementById('reference-url').value
+                },
+                en: {
+                    title: document.getElementById('badge-name').value,
+                    description: document.getElementById('description-en').value,
+                    requirements: Array.from(document.querySelectorAll('#requirements-en input')).map(input => input.value).filter(v => v),
+                    availability: document.getElementById('availability').value,
+                    url: document.getElementById('reference-url').value
+                }
+            };
+
+            try {
+                const response = await fetch('/api/admin/approve-badge', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        badge_id: currentBadge.id,
+                        updated_info: formData
+                    })
+                });
+
+                if (response.ok) {
+                    logMessage(`バッジ "${currentBadge.id}" を承認しました`);
+                    closeModal();
+                    loadPendingBadges();
+                } else {
+                    logMessage('エラー: バッジの承認に失敗しました');
+                }
+            } catch (error) {
+                console.error('Error approving badge:', error);
+                logMessage('エラー: バッジの承認中にエラーが発生しました');
+            }
+        }
+
+        async function forceCheck() {
+            try {
+                logMessage('手動チェックを実行中...');
+                const response = await fetch('/api/admin/force-check');
+                const data = await response.json();
+                
+                if (data.success) {
+                    logMessage('手動チェックが完了しました');
+                    setTimeout(loadPendingBadges, 1000);
+                } else {
+                    logMessage('エラー: 手動チェックに失敗しました');
+                }
+            } catch (error) {
+                console.error('Error during force check:', error);
+                logMessage('エラー: 手動チェック中にエラーが発生しました');
+            }
+        }
+
+        function logMessage(message) {
+            const logContainer = document.getElementById('system-log');
+            const timestamp = new Date().toLocaleTimeString('ja-JP');
+            logContainer.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPendingBadges();
+            
+            // 定期的に更新
+            setInterval(loadPendingBadges, 30000); // 30秒ごと
+        });
+    </script>
+</body>
+</html>

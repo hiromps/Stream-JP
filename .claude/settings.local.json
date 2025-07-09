@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(curl:*)",
+      "Bash(rm:*)",
+      "WebFetch(domain:dev.twitch.tv)"
+    ],
+    "deny": []
+  }
+}
