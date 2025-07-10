@@ -5,7 +5,11 @@
       "destination": "/api"
     },
     {
-      "source": "/(.*)",
+      "source": "/stream",
+      "destination": "/stream.html"
+    },
+    {
+      "source": "/",
       "destination": "/index.html"
     }
   ],
