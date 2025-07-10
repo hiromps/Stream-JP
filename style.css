@@ -402,6 +402,128 @@ footer p {
     }
 }
 
+/* バッジ入手可能性のスタイル */
+.badge-availability {
+    font-size: 0.8em;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-top: 8px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 入手可能（緑） */
+.availability-available {
+    background-color: #00f5c4;
+    color: #0e0e10;
+}
+
+/* 期間限定（オレンジ） */
+.availability-limited {
+    background-color: #ff9146;
+    color: #0e0e10;
+    animation: pulse 2s infinite;
+}
+
+/* 近日開始（青） */
+.availability-upcoming {
+    background-color: #1f69ff;
+    color: #efeff1;
+}
+
+/* 期間終了（赤） */
+.availability-expired {
+    background-color: #eb0400;
+    color: #efeff1;
+}
+
+/* 配布予定（紫） */
+.availability-future {
+    background-color: #8b5cf6;
+    color: #efeff1;
+}
+
+/* 不明（グレー） */
+.availability-unknown {
+    background-color: #53535f;
+    color: #efeff1;
+}
+
+/* 期間限定のパルス効果 */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* バッジ詳細ページの入手可能性表示 */
+.availability-status {
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.availability-status.available {
+    background-color: #00f5c4;
+    color: #0e0e10;
+}
+
+.availability-status.limited {
+    background-color: #ff9146;
+    color: #0e0e10;
+    animation: pulse 2s infinite;
+}
+
+.availability-status.upcoming {
+    background-color: #1f69ff;
+    color: #efeff1;
+}
+
+.availability-status.unavailable {
+    background-color: #eb0400;
+    color: #efeff1;
+}
+
+.availability-status.future {
+    background-color: #8b5cf6;
+    color: #efeff1;
+}
+
+.availability-status.unknown {
+    background-color: #53535f;
+    color: #efeff1;
+}
+
+/* 期間情報表示 */
+.availability-period {
+    font-size: 0.8em;
+    color: #adadb8;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* 入手不可能なバッジの視覚的表現 */
+.badge-card:has(.availability-expired) {
+    opacity: 0.6;
+    filter: grayscale(30%);
+}
+
+.badge-card:has(.availability-expired) .badge-image-large {
+    filter: grayscale(50%);
+}
+
+.badge-card:has(.availability-future) {
+    opacity: 0.8;
+    border: 2px dashed #8b5cf6;
+}
+
 @media (max-width: 480px) {
     .badge-container {
         grid-template-columns: 1fr;
@@ -410,5 +532,10 @@ footer p {
     .badge-image-large {
         width: 48px;
         height: 48px;
+    }
+    
+    .badge-availability {
+        font-size: 0.7em;
+        padding: 3px 6px;
     }
 }

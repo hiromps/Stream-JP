@@ -13,6 +13,196 @@ function getBaseUrl() {
 
 const BASE_URL = getBaseUrl();
 
+// バッジの入手可能期間データベース
+const badgeAvailabilityPeriods = {
+    'clips-leader': {
+        type: 'ongoing',
+        description: 'Ongoing feature since April 11, 2025'
+    },
+    'legendus': {
+        type: 'time-limited',
+        start: '2025-06-28T00:00:00Z',
+        end: '2025-06-29T23:59:59Z',
+        description: 'LEGENDUS ITADAKI event June 28-29, 2025'
+    },
+    'marathon-reveal-runner': {
+        type: 'time-limited',
+        start: '2025-04-11T00:00:00Z',
+        end: '2025-04-12T23:59:59Z',
+        description: 'Marathon Reveal stream subscription April 11-12, 2025'
+    },
+    'gone-bananas': {
+        type: 'time-limited',
+        start: '2025-04-01T00:00:00Z',
+        end: '2025-04-04T23:59:59Z',
+        description: 'April Fools 2025 April 1-4, 2025'
+    },
+    'elden-ring-wylder': {
+        type: 'time-limited',
+        start: '2025-05-29T00:00:00Z',
+        end: '2025-06-03T23:59:59Z',
+        description: 'Elden Ring Nightreign clip sharing May 29 - June 3, 2025'
+    },
+    'elden-ring-recluse': {
+        type: 'time-limited',
+        start: '2025-05-29T00:00:00Z',
+        end: '2025-05-30T23:59:59Z',
+        description: 'Elden Ring SuperFan Recluse May 29-30, 2025'
+    },
+    'league-of-legends-mid-season-invitational-2025---grey': {
+        type: 'time-limited',
+        start: '2025-06-24T00:00:00Z',
+        end: '2025-07-12T08:59:00Z',
+        description: 'MSI 2025 June 24 - July 12, 2025'
+    },
+    'league-of-legends-mid-season-invitational-2025---purple': {
+        type: 'time-limited',
+        start: '2025-06-24T00:00:00Z',
+        end: '2025-07-12T08:59:00Z',
+        description: 'MSI 2025 June 24 - July 12, 2025'
+    },
+    'league-of-legends-mid-season-invitational-2025---blue': {
+        type: 'time-limited',
+        start: '2025-06-24T00:00:00Z',
+        end: '2025-07-12T08:59:00Z',
+        description: 'MSI 2025 June 24 - July 12, 2025'
+    },
+    'borderlands-4-badge---ripper': {
+        type: 'time-limited',
+        start: '2025-06-21T00:00:00Z',
+        end: '2025-06-21T23:59:59Z',
+        description: 'Borderlands 4 Fan Fest June 21, 2025'
+    },
+    'borderlands-4-badge---vault-symbol': {
+        type: 'time-limited',
+        start: '2025-06-21T00:00:00Z',
+        end: '2025-06-21T23:59:59Z',
+        description: 'Borderlands 4 Fan Fest June 21, 2025'
+    },
+    'bot-badge': {
+        type: 'future',
+        description: 'Added to system but not yet distributed'
+    },
+    'minecraft-15th-anniversary-celebration': {
+        type: 'time-limited',
+        start: '2024-05-25T00:00:00Z',
+        end: '2024-05-31T23:59:59Z',
+        description: 'Minecraft 15th Anniversary May 25-31, 2024'
+    },
+    'clip-the-halls': {
+        type: 'time-limited',
+        start: '2024-12-02T00:00:00Z',
+        end: '2024-12-13T23:59:59Z',
+        description: 'Holiday Hoopla 2024 December 2-13, 2024'
+    },
+    'gold-pixel-heart---together-for-good-24': {
+        type: 'time-limited',
+        start: '2024-12-03T00:00:00Z',
+        end: '2024-12-15T23:59:59Z',
+        description: 'Together for Good 2024 December 3-15, 2024'
+    },
+    'gold-pixel-heart': {
+        type: 'time-limited',
+        start: '2024-12-03T00:00:00Z',
+        end: '2024-12-15T23:59:59Z',
+        description: 'Together for Good 2024 December 3-15, 2024'
+    },
+    'arcane-season-2-premiere': {
+        type: 'time-limited',
+        start: '2024-11-08T00:00:00Z',
+        end: '2024-11-09T23:59:59Z',
+        description: 'Arcane Season 2 Premiere November 8-9, 2024'
+    },
+    'dreamcon-2024': {
+        type: 'time-limited',
+        start: '2024-07-26T00:00:00Z',
+        end: '2024-07-28T23:59:59Z',
+        description: 'DreamCon 2024 July 26-28, 2024'
+    },
+    'destiny-2-the-final-shape-streamer': {
+        type: 'time-limited',
+        start: '2024-06-07T00:00:00Z',
+        end: '2024-06-09T23:59:59Z',
+        description: 'Destiny 2 raid race June 7-9, 2024'
+    },
+    'destiny-2-final-shape-raid-race': {
+        type: 'time-limited',
+        start: '2024-06-07T00:00:00Z',
+        end: '2024-06-09T23:59:59Z',
+        description: 'Destiny 2 raid race June 7-9, 2024'
+    }
+};
+
+// 動的な入手可能性を判定する関数
+function getBadgeAvailabilityStatus(badgeId) {
+    const period = badgeAvailabilityPeriods[badgeId];
+    if (!period) {
+        return { status: 'unknown', message: '入手可能期間の情報がありません' };
+    }
+    
+    const now = new Date();
+    
+    switch (period.type) {
+        case 'ongoing':
+            return { 
+                status: 'available', 
+                message: '現在入手可能',
+                isAvailable: true,
+                description: period.description
+            };
+        
+        case 'time-limited':
+            const startDate = new Date(period.start);
+            const endDate = new Date(period.end);
+            
+            if (now < startDate) {
+                const daysUntilStart = Math.ceil((startDate - now) / (1000 * 60 * 60 * 24));
+                return {
+                    status: 'upcoming',
+                    message: `${daysUntilStart}日後に入手可能`,
+                    isAvailable: false,
+                    description: period.description,
+                    startDate: startDate,
+                    endDate: endDate
+                };
+            } else if (now > endDate) {
+                return {
+                    status: 'expired',
+                    message: '入手期間終了',
+                    isAvailable: false,
+                    description: period.description,
+                    startDate: startDate,
+                    endDate: endDate
+                };
+            } else {
+                const daysUntilEnd = Math.ceil((endDate - now) / (1000 * 60 * 60 * 24));
+                return {
+                    status: 'limited',
+                    message: `あと${daysUntilEnd}日で終了`,
+                    isAvailable: true,
+                    description: period.description,
+                    startDate: startDate,
+                    endDate: endDate
+                };
+            }
+        
+        case 'future':
+            return {
+                status: 'future',
+                message: '配布予定',
+                isAvailable: false,
+                description: period.description
+            };
+        
+        default:
+            return { 
+                status: 'unknown', 
+                message: '入手可能期間の情報がありません',
+                isAvailable: false
+            };
+    }
+}
+
 // 翻訳データ
 const translations = {
     ja: {
@@ -795,11 +985,47 @@ function displayObtainMethod(badgeSet) {
     });
     document.getElementById('obtain-requirements').style.display = 'block';
     
-    // 利用可能性
+    // 利用可能性（動的判定）
+    const availabilityInfo = getBadgeAvailabilityStatus(badgeSet.set_id);
     const availabilityStatus = document.getElementById('availability-status');
-    availabilityStatus.className = `availability-status ${langData.availability}`;
-    availabilityStatus.textContent = t(`availability.${langData.availability}`);
+    
+    // 状態に応じたスタイルクラスを設定
+    let statusClass = '';
+    switch (availabilityInfo.status) {
+        case 'available':
+            statusClass = 'available';
+            break;
+        case 'limited':
+            statusClass = 'limited';
+            break;
+        case 'upcoming':
+            statusClass = 'upcoming';
+            break;
+        case 'expired':
+            statusClass = 'unavailable';
+            break;
+        case 'future':
+            statusClass = 'future';
+            break;
+        default:
+            statusClass = 'unknown';
+    }
+    
+    availabilityStatus.className = `availability-status ${statusClass}`;
+    availabilityStatus.textContent = availabilityInfo.message;
     document.getElementById('obtain-availability').style.display = 'flex';
+    
+    // 期間情報を表示（期間限定の場合）
+    if (availabilityInfo.startDate && availabilityInfo.endDate) {
+        const periodInfo = document.createElement('div');
+        periodInfo.className = 'availability-period';
+        const startDateStr = availabilityInfo.startDate.toLocaleDateString('ja-JP');
+        const endDateStr = availabilityInfo.endDate.toLocaleDateString('ja-JP');
+        periodInfo.textContent = `期間: ${startDateStr} - ${endDateStr}`;
+        
+        const availabilityContainer = document.getElementById('obtain-availability');
+        availabilityContainer.appendChild(periodInfo);
+    }
     
     // 詳細情報URL
     if (langData.url) {
