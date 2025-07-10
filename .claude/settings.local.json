@@ -6,7 +6,9 @@
       "Bash(ls:*)",
       "Bash(curl:*)",
       "Bash(rm:*)",
-      "WebFetch(domain:dev.twitch.tv)"
+      "WebFetch(domain:dev.twitch.tv)",
+      "Bash(grep:*)",
+      "Bash(git add:*)"
     ],
     "deny": []
   }

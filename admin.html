@@ -338,11 +338,46 @@
     </div>
 
     <script>
+        // ベースURLを動的に取得
+        function getBaseUrl() {
+            // 現在のURLからベースパスを取得
+            const currentPath = window.location.pathname;
+            
+            // 本番環境の場合、適切なベースURLを設定
+            if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1' && window.location.hostname !== '0.0.0.0') {
+                // 本番環境: 現在のパスからベースディレクトリを推測
+                const pathParts = currentPath.split('/');
+                
+                // admin.htmlで終わる場合は、そのディレクトリをベースとする
+                if (currentPath.endsWith('admin.html')) {
+                    const basePath = currentPath.replace('/admin.html', '');
+                    return basePath || '';
+                }
+                
+                // ディレクトリパスの場合
+                if (currentPath.endsWith('/')) {
+                    return currentPath.slice(0, -1);
+                }
+                
+                // それ以外の場合は、最後の/までをベースとする
+                const lastSlash = currentPath.lastIndexOf('/');
+                if (lastSlash > 0) {
+                    return currentPath.substring(0, lastSlash);
+                }
+                
+                return '';
+            }
+            
+            // 開発環境
+            return '';
+        }
+
+        const BASE_URL = getBaseUrl();
         let currentBadge = null;
 
         async function loadPendingBadges() {
             try {
-                const response = await fetch('/api/admin/pending-badges');
+                const response = await fetch(`${BASE_URL}/api/admin/pending-badges`);
                 const data = await response.json();
                 
                 updateLastChecked(data.last_checked);
@@ -396,7 +431,7 @@
 
         function openResearchModal(badgeId) {
             // バッジ情報を取得して編集モーダルを開く
-            fetch('/api/admin/pending-badges')
+            fetch(`${BASE_URL}/api/admin/pending-badges`)
                 .then(response => response.json())
                 .then(data => {
                     const badge = data.pending_badges.find(b => b.id === badgeId);
@@ -475,7 +510,7 @@
             };
 
             try {
-                const response = await fetch('/api/admin/approve-badge', {
+                const response = await fetch(`${BASE_URL}/api/admin/approve-badge`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -502,7 +537,7 @@
         async function forceCheck() {
             try {
                 logMessage('手動チェックを実行中...');
-                const response = await fetch('/api/admin/force-check');
+                const response = await fetch(`${BASE_URL}/api/admin/force-check`);
                 const data = await response.json();
                 
                 if (data.success) {

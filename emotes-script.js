@@ -1,3 +1,18 @@
+// ベースURLを動的に取得
+function getBaseUrl() {
+    // Vercelでは全てのAPIエンドポイントが同じオリジンで提供される
+    // 開発環境と本番環境を自動判別
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        // 開発環境: Flask開発サーバー
+        return 'http://localhost:5000';
+    } else {
+        // 本番環境（Vercel）: APIは同じオリジンの/api/パスで提供される
+        return '';
+    }
+}
+
+const BASE_URL = getBaseUrl();
+
 // エモートデータを保存するグローバル変数
 let allEmotes = [];
 let currentSortOrder = 'newest';
@@ -11,7 +26,7 @@ async function loadGlobalEmotes() {
     
     try {
         // バックエンドAPIにリクエスト
-        const response = await fetch('/api/emotes');
+        const response = await fetch(`${BASE_URL}/api/emotes`);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
