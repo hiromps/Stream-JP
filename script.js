@@ -206,10 +206,10 @@ function getBadgeAvailabilityStatus(badgeId) {
 // 翻訳データ
 const translations = {
     ja: {
-        'app.title': 'Stream JP',
+        'app.title': 'StreamPartnerJP',
         'app.subtitle': 'Twitchグローバルバッジ一覧',
         'loading.message': 'バッジを読み込み中...',
-        'footer.copyright': '© 2025 Stream JP.',
+        'footer.copyright': '© 2025 StreamPartnerJP.',
         'footer.description': 'Twitch APIを使用して最新のグローバルバッジを表示しています。',
         'error.loading': 'バッジの読み込みに失敗しました',
         'error.notfound': 'バッジが見つかりませんでした。',
@@ -220,10 +220,10 @@ const translations = {
         'nav.emotes': 'エモートページ'
     },
     en: {
-        'app.title': 'Stream JP',
+        'app.title': 'StreamPartnerJP',
         'app.subtitle': 'Twitch Global Badges',
         'loading.message': 'Loading badges...',
-        'footer.copyright': '© 2025 Stream JP.',
+        'footer.copyright': '© 2025 StreamPartnerJP.',
         'footer.description': 'Displaying the latest global badges using the Twitch API.',
         'error.loading': 'Failed to load badges',
         'error.notfound': 'No badges found.',

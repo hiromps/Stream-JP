@@ -108,12 +108,45 @@ function createEmoteCard(emote) {
     const card = document.createElement('div');
     card.className = 'emote-card';
     
-    // エモート画像
+    // エモート画像（アニメーション優先）
     const img = document.createElement('img');
     img.className = 'emote-image';
-    img.src = emote.images.url_2x || emote.images.url_1x;
+    
+    // アニメーション版を優先的に使用
+    let imageUrl = null;
+    if (emote.images.animated_url_4x) {
+        imageUrl = emote.images.animated_url_4x;
+    } else if (emote.images.animated_url_2x) {
+        imageUrl = emote.images.animated_url_2x;
+    } else if (emote.images.animated_url_1x) {
+        imageUrl = emote.images.animated_url_1x;
+    } else if (emote.images.url_4x) {
+        imageUrl = emote.images.url_4x;
+    } else if (emote.images.url_2x) {
+        imageUrl = emote.images.url_2x;
+    } else {
+        imageUrl = emote.images.url_1x;
+    }
+    
+    img.src = imageUrl;
     img.alt = emote.name;
     img.loading = 'lazy';
+    
+    // アニメーションが利用できない場合のフォールバック処理
+    img.onerror = function() {
+        // アニメーション版でエラーが発生した場合、静的版にフォールバック
+        if (this.src.includes('/animated/')) {
+            const staticUrl = this.src.replace('/animated/', '/static/');
+            this.src = staticUrl;
+        } else if (this.src.includes('/static/')) {
+            // 静的版でもエラーの場合、元のAPI URLにフォールバック
+            if (emote.images.url_2x) {
+                this.src = emote.images.url_2x;
+            } else if (emote.images.url_1x) {
+                this.src = emote.images.url_1x;
+            }
+        }
+    };
     
     // エモート名
     const name = document.createElement('div');

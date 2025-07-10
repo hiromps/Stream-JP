@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ストリーム - StreamPartnerJP</title>
+    <link rel="stylesheet" href="stream.css">
+</head>
+<body>
+    <div class="gaming-container">
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.25rem;">
+                            <img src="/static/images/logo.png" alt="StreamPartnerJP" style="width: 32px; height: 32px; object-fit: contain;">
+                            <h1 style="margin: 0; line-height: 1;">StreamPartnerJP</h1>
+                        </div>
+                        <p class="subtitle" style="margin: 0; margin-left: 2.5rem;">ストリーム配信ダッシュボード</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Gaming Dashboard -->
+        <main class="gaming-dashboard">
+            <!-- Global Badges Section -->
+            <section class="dashboard-block badges-block">
+                <div class="block-header">
+                    <div class="block-title">
+                        <div class="title-glow"></div>
+                        <h2>グローバルバッジ</h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="block-status">
+                        <div class="status-indicator online"></div>
+                        <span>最新順</span>
+                    </div>
+                </div>
+                <div class="block-content scrollable-content">
+                    <div class="badges-grid" id="badges-grid">
+                        <div class="loading-state">
+                            <div class="cyber-loader"></div>
+                            <p>バッジを読み込み中...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Available Badges Section -->
+            <section class="dashboard-block available-badges-block">
+                <div class="block-header">
+                    <div class="block-title">
+                        <div class="title-glow"></div>
+                        <h2>入手可能バッジ</h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="block-status">
+                        <div class="status-indicator pulse"></div>
+                        <span>取得可能</span>
+                    </div>
+                </div>
+                <div class="block-content scrollable-content">
+                    <div class="available-badges-grid" id="available-badges-grid">
+                        <div class="loading-state">
+                            <div class="cyber-loader"></div>
+                            <p>入手可能なバッジを読み込み中...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Global Emotes Section -->
+            <section class="dashboard-block emotes-block">
+                <div class="block-header">
+                    <div class="block-title">
+                        <div class="title-glow"></div>
+                        <h2>グローバルエモート</h2>
+                        <div class="title-underline"></div>
+                    </div>
+                    <div class="block-status">
+                        <div class="status-indicator online"></div>
+                        <span>最新順</span>
+                    </div>
+                </div>
+                <div class="block-content scrollable-content">
+                    <div class="emotes-grid" id="emotes-grid">
+                        <div class="loading-state">
+                            <div class="cyber-loader"></div>
+                            <p>エモートを読み込み中...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script src="stream.js"></script>
+</body>
+</html>

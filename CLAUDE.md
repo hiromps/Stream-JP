@@ -4,7 +4,7 @@
 
 ## プロジェクト概要
 
-StreamJPは、Twitch Helix APIを使用してTwitchのグローバルバッジを表示するFlaskベースのWebアプリケーション（Twitchグローバルバッジビューアー）です。
+StreamPartnerJPは、Twitch Helix APIを使用してTwitchのグローバルバッジを表示するFlaskベースのWebアプリケーション（Twitchグローバルバッジビューアー）です。
 
 ## 技術スタック
 

@@ -8,7 +8,9 @@
       "Bash(rm:*)",
       "WebFetch(domain:dev.twitch.tv)",
       "Bash(grep:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "WebFetch(domain:www.streamdatabase.com)",
+      "Bash(mkdir:*)"
     ],
     "deny": []
   }

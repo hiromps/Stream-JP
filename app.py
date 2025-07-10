@@ -410,7 +410,7 @@ def get_global_emotes():
         return jsonify({'error': 'Failed to fetch emotes'}), 500
 
 def enhance_emotes_with_timestamps(twitch_data):
-    """Stream Databaseのデータでエモートにタイムスタンプを追加"""
+    """Stream Databaseのデータでエモートにタイムスタンプとアニメーション情報を追加"""
     # Stream Database（2025年7月更新）からの正確な追加日データベース
     emote_timestamps = {
         # 2025年に追加されたエモート（Stream Databaseから取得）
@@ -454,7 +454,7 @@ def enhance_emotes_with_timestamps(twitch_data):
         'andalusiancrush': '2024-09-23T00:00:00.000Z',
     }
     
-    # エモートデータにタイムスタンプを追加
+    # エモートデータにタイムスタンプとアニメーション情報を追加
     if 'data' in twitch_data:
         for emote in twitch_data['data']:
             emote_name = emote.get('name', '').lower()
@@ -462,13 +462,58 @@ def enhance_emotes_with_timestamps(twitch_data):
             # 完全一致チェック
             if emote_name in emote_timestamps:
                 emote['created_at'] = emote_timestamps[emote_name]
+            
+            # アニメーション対応のURL構築
+            enhance_emote_with_animation_urls(emote)
     
     return twitch_data
+
+def enhance_emote_with_animation_urls(emote):
+    """エモートにアニメーション対応のURLを追加"""
+    emote_id = emote.get('id')
+    if not emote_id:
+        return
+    
+    # 既存の画像URLを取得
+    images = emote.get('images', {})
+    
+    # アニメーション形式のURLを構築
+    # Twitchのエモートアニメーション形式: /animated/dark/scale または /static/dark/scale
+    base_url = f"https://static-cdn.jtvnw.net/emoticons/v2/{emote_id}"
+    
+    # アニメーション版のURLを追加
+    animated_urls = {
+        'animated_url_1x': f"{base_url}/animated/dark/1.0",
+        'animated_url_2x': f"{base_url}/animated/dark/2.0", 
+        'animated_url_4x': f"{base_url}/animated/dark/3.0"
+    }
+    
+    # 静的版のURLも追加（フォールバック用）
+    static_urls = {
+        'static_url_1x': f"{base_url}/static/dark/1.0",
+        'static_url_2x': f"{base_url}/static/dark/2.0",
+        'static_url_4x': f"{base_url}/static/dark/3.0"
+    }
+    
+    # 画像オブジェクトにアニメーション情報を追加
+    if 'images' not in emote:
+        emote['images'] = {}
+    
+    emote['images'].update(animated_urls)
+    emote['images'].update(static_urls)
+    
+    # アニメーション優先フラグを追加
+    emote['prefer_animated'] = True
 
 @app.route('/')
 def index():
     """ルートエンドポイント"""
     return send_from_directory('.', 'index.html')
+
+@app.route('/stream')
+def stream():
+    """ストリームページ"""
+    return send_from_directory('.', 'stream.html')
 
 @app.route('/<path:path>')
 def serve_static(path):
