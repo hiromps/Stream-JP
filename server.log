@@ -792,3 +792,12 @@ Press CTRL+C to quit
 192.168.32.1 - - [09/Jul/2025 14:54:18] "GET /api/admin/pending-badges HTTP/1.1" 200 -
 192.168.32.1 - - [09/Jul/2025 14:54:40] "GET /api/admin/pending-badges HTTP/1.1" 200 -
 192.168.32.1 - - [09/Jul/2025 14:55:10] "GET /api/admin/pending-badges HTTP/1.1" 200 -
+192.168.32.1 - - [09/Jul/2025 14:55:40] "GET /api/admin/pending-badges HTTP/1.1" 200 -
+192.168.32.1 - - [09/Jul/2025 14:56:10] "GET /api/admin/pending-badges HTTP/1.1" 200 -
+192.168.32.1 - - [09/Jul/2025 14:56:40] "GET /api/admin/pending-badges HTTP/1.1" 200 -
+192.168.32.1 - - [09/Jul/2025 14:57:10] "GET /api/admin/pending-badges HTTP/1.1" 200 -
+192.168.32.1 - - [09/Jul/2025 14:57:40] "GET /api/admin/pending-badges HTTP/1.1" 200 -
+192.168.32.1 - - [09/Jul/2025 14:58:29] "GET /api/admin/pending-badges HTTP/1.1" 200 -
+192.168.32.1 - - [09/Jul/2025 14:58:31] "GET /admin.html HTTP/1.1" 304 -
+192.168.32.1 - - [09/Jul/2025 14:58:31] "GET /style.css HTTP/1.1" 304 -
+192.168.32.1 - - [09/Jul/2025 14:58:31] "GET /api/admin/pending-badges HTTP/1.1" 200 -

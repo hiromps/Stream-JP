@@ -6,13 +6,24 @@ import json
 from datetime import datetime, timedelta
 import threading
 import time
+from dotenv import load_dotenv
+
+# .envファイルを読み込む
+load_dotenv()
 
 app = Flask(__name__, static_folder='.', static_url_path='')
 CORS(app)
 
-# Twitch API認証情報（ユーザーが自分のものに置き換える）
-CLIENT_ID = 'zez864mn8go8x3868utdpd1f47atau'
-CLIENT_SECRET = 'u68tai7cy8hevwt3scc8ve4j47apvh'
+# Twitch API認証情報（環境変数から取得）
+CLIENT_ID = os.getenv('TWITCH_CLIENT_ID')
+CLIENT_SECRET = os.getenv('TWITCH_CLIENT_SECRET')
+
+# 環境変数が設定されていない場合のエラーチェック
+if not CLIENT_ID or not CLIENT_SECRET:
+    print("ERROR: Twitch API credentials not found!")
+    print("Please set TWITCH_CLIENT_ID and TWITCH_CLIENT_SECRET in your .env file")
+    print("Copy .env.example to .env and add your credentials")
+    exit(1)
 
 # アクセストークンのキャッシュ
 access_token_cache = {
