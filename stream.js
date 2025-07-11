@@ -542,8 +542,7 @@ class StreamDashboard {
                 ja: {
                     requirements: [
                         `${getDynamicPeriodText(availability)}`,
-                        'League of Legendsカテゴリのストリーマーに購読',
-                        'ギフト購読でも獲得可能',
+                        'Riot Gamesチャンネルに購読またはギフト購読',
                         'Prime購読は対象外',
                         'TwitchとRiotアカウントの連携が必要'
                     ]
@@ -553,8 +552,7 @@ class StreamDashboard {
                 ja: {
                     requirements: [
                         `${getDynamicPeriodText(availability)}`,
-                        'League of Legendsカテゴリのストリーマーに購読',
-                        'ギフト購読でも獲得可能',
+                        'Riot Gamesチャンネルに購読またはギフト購読',
                         'Prime購読は対象外',
                         'TwitchとRiotアカウントの連携が必要'
                     ]
@@ -600,9 +598,9 @@ class StreamDashboard {
             'gone-bananas': 'April Fools 2025 イベント期間中に特別なイベント配信を視聴することで入手可能でした。現在は入手できません。',
             'elden-ring-wylder': 'Elden Ring Nightreign の発表イベント期間中にクリップを作成・共有することで入手可能でした。現在は入手できません。',
             'elden-ring-recluse': 'Elden Ring SuperFan イベント期間中にFromSoftware公式配信を視聴することで入手可能でした。現在は入手できません。',
-            'league-of-legends-mid-season-invitational-2025---grey': 'MSI 2025 期間中に League of Legends カテゴリのストリーマーに購読することで入手可能です。Prime購読は対象外で、TwitchとRiotアカウントの連携が必要です。',
-            'league-of-legends-mid-season-invitational-2025---purple': 'MSI 2025 期間中に League of Legends カテゴリのストリーマーに購読することで入手可能です。Prime購読は対象外で、TwitchとRiotアカウントの連携が必要です。',
-            'league-of-legends-mid-season-invitational-2025---blue': 'MSI 2025 期間中に League of Legends カテゴリのストリーマーに購読することで入手可能です。Prime購読は対象外で、TwitchとRiotアカウントの連携が必要です。',
+            'league-of-legends-mid-season-invitational-2025---grey': 'MSI 2025 期間中に League of Legends カテゴリのストリーマーに購読することで入手可能です。ギフト購読でも獲得可能で、Prime購読は対象外で、TwitchとRiotアカウントの連携が必要です。',
+            'league-of-legends-mid-season-invitational-2025---purple': 'MSI 2025 期間中に Riot Games チャンネルに購読またはギフト購読することで入手可能です。Prime購読は対象外で、TwitchとRiotアカウントの連携が必要です。',
+            'league-of-legends-mid-season-invitational-2025---blue': 'MSI 2025 期間中に Riot Games チャンネルに購読またはギフト購読することで入手可能です。Prime購読は対象外で、TwitchとRiotアカウントの連携が必要です。',
             'borderlands-4-badge---ripper': 'Borderlands 4 Fan Fest イベントでBorderlands 4 関連の配信を視聴することで入手可能でした。現在は入手できません。',
             'borderlands-4-badge---vault-symbol': 'Borderlands 4 Fan Fest イベントでBorderlands 4 関連の配信を視聴することで入手可能でした。現在は入手できません。'
         };
