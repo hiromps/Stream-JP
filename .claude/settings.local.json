@@ -10,7 +10,8 @@
       "Bash(grep:*)",
       "Bash(git add:*)",
       "WebFetch(domain:www.streamdatabase.com)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(rg:*)"
     ],
     "deny": []
   }

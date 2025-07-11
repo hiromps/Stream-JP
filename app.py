@@ -60,6 +60,11 @@ def get_app_access_token():
         access_token_cache['expires_at'] = time.time() + expires_in - 60  # 1分前に期限切れとする
         
         return access_token
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP Error getting access token: {e}")
+        print(f"Response status: {response.status_code}")
+        print(f"Response body: {response.text}")
+        return None
     except Exception as e:
         print(f"Error getting access token: {e}")
         return None

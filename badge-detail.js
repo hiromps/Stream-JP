@@ -175,10 +175,28 @@ function getBadgeAvailabilityStatus(badgeId) {
                     endDate: endDate
                 };
             } else {
-                const daysUntilEnd = Math.ceil((endDate - now) / (1000 * 60 * 60 * 24));
+                const hoursUntilEnd = (endDate - now) / (1000 * 60 * 60);
+                let message;
+                
+                if (hoursUntilEnd < 24) {
+                    // 24時間未満の場合は時間表示
+                    const hours = Math.ceil(hoursUntilEnd);
+                    message = `あと${hours}時間で終了`;
+                } else {
+                    // 24時間以上の場合は日数表示（切り捨て）
+                    const daysUntilEnd = Math.floor(hoursUntilEnd / 24);
+                    if (daysUntilEnd === 0) {
+                        message = '本日終了';
+                    } else if (daysUntilEnd === 1) {
+                        message = 'あと1日で終了';
+                    } else {
+                        message = `あと${daysUntilEnd}日で終了`;
+                    }
+                }
+                
                 return {
                     status: 'limited',
-                    message: `あと${daysUntilEnd}日で終了`,
+                    message: message,
                     isAvailable: true,
                     description: period.description,
                     startDate: startDate,

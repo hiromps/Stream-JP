@@ -199,6 +199,14 @@ class StreamDashboard {
             const data = await response.json();
             this.emotes = data.data || [];
             
+            // デバッグ用：最初の数個のエモートの画像URLを確認
+            if (this.emotes.length > 0) {
+                console.log('エモートサンプル:', this.emotes.slice(0, 3).map(e => ({
+                    name: e.name,
+                    images: e.images
+                })));
+            }
+            
             this.renderEmotes();
             
             console.log(`✅ ${this.emotes.length}個のエモートを読み込みました`);
@@ -583,38 +591,67 @@ class StreamDashboard {
     }
 
     createEmoteElement(emote) {
-        // エモート画像URLの取得（アニメーション優先）
+        // エモート画像URLの取得（静的画像を優先してエラーを減らす）
         let imageUrl = null;
         if (emote.images) {
-            // アニメーション版を優先的に使用
-            if (emote.images.animated_url_4x) {
-                imageUrl = emote.images.animated_url_4x;
-            } else if (emote.images.animated_url_2x) {
-                imageUrl = emote.images.animated_url_2x;
-            } else if (emote.images.animated_url_1x) {
-                imageUrl = emote.images.animated_url_1x;
-            } else if (emote.images.url_4x) {
+            // 静的画像を優先的に使用（404エラーを減らすため）
+            if (emote.images.url_4x) {
                 imageUrl = emote.images.url_4x;
             } else if (emote.images.url_2x) {
                 imageUrl = emote.images.url_2x;
             } else if (emote.images.url_1x) {
                 imageUrl = emote.images.url_1x;
+            } 
+            // 静的画像がない場合のみアニメーション版を使用
+            else if (emote.images.animated_url_2x) {
+                imageUrl = emote.images.animated_url_2x;
+            } else if (emote.images.animated_url_1x) {
+                imageUrl = emote.images.animated_url_1x;
+            } else if (emote.images.animated_url_4x) {
+                imageUrl = emote.images.animated_url_4x;
             }
         }
         
         // フォールバック用のSVGアイコン（エモート用）
         const fallbackIcon = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNiAzNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjM2IiBoZWlnaHQ9IjM2IiByeD0iMTgiIGZpbGw9IiMyYTJhMmQiLz4KPGNpcmNsZSBjeD0iMTMiIGN5PSIxNCIgcj0iMiIgZmlsbD0iIzkzNDJGRiIvPgo8Y2lyY2xlIGN4PSIyMyIgY3k9IjE0IiByPSIyIiBmaWxsPSIjOTM0MkZGIi8+CjxwYXRoIGQ9Ik0xMiAyMkgyNEMyMi44OTU0IDI0IDIxLjEwNDYgMjQgMjAgMjJIMTJaIiBmaWxsPSIjOTM0MkZGIi8+Cjwvc3ZnPgo=';
         
-        // アニメーション対応のフォールバック処理を含むonerrorハンドラー
+        // 改良されたフォールバック処理
         const fallbackHandlers = `
-            if (this.src.includes('/animated/')) {
-                this.src = this.src.replace('/animated/', '/static/');
-            } else if (this.src.includes('/static/')) {
-                ${emote.images && emote.images.url_2x ? `this.src = '${emote.images.url_2x}';` : 
-                  emote.images && emote.images.url_1x ? `this.src = '${emote.images.url_1x}';` : 
-                  `this.src = '${fallbackIcon}';`}
-            } else {
+            console.log('エモート画像の読み込みに失敗:', this.src);
+            const currentSrc = this.src;
+            
+            // アニメーション版からスタティック版に変更
+            if (currentSrc.includes('/animated/')) {
+                const staticUrl = currentSrc.replace('/animated/', '/static/');
+                console.log('スタティック版に変更:', staticUrl);
+                this.src = staticUrl;
+            } 
+            // 4x解像度から2x解像度に変更
+            else if (currentSrc.includes('/4.0')) {
+                const url2x = currentSrc.replace('/4.0', '/2.0');
+                console.log('2x解像度に変更:', url2x);
+                this.src = url2x;
+            }
+            // 2x解像度から1x解像度に変更
+            else if (currentSrc.includes('/2.0')) {
+                const url1x = currentSrc.replace('/2.0', '/1.0');
+                console.log('1x解像度に変更:', url1x);
+                this.src = url1x;
+            }
+            // 他のAPI URLがある場合はそれを試す
+            else if ('${emote.images && emote.images.url_2x || ''}' && currentSrc !== '${emote.images.url_2x || ''}') {
+                console.log('静的2x画像に変更:', '${emote.images.url_2x || ''}');
+                this.src = '${emote.images.url_2x || ''}';
+            }
+            else if ('${emote.images && emote.images.url_1x || ''}' && currentSrc !== '${emote.images.url_1x || ''}') {
+                console.log('静的1x画像に変更:', '${emote.images.url_1x || ''}');
+                this.src = '${emote.images.url_1x || ''}';
+            }
+            // 最終的にフォールバックアイコンに変更
+            else {
+                console.log('フォールバックアイコンに変更');
                 this.src = '${fallbackIcon}';
+                this.style.opacity = '0.5';
             }
         `;
         
@@ -1110,9 +1147,4 @@ window.addEventListener('error', (e) => {
     }
 });
 
-// サービスワーカー登録（オフラインサポート用、オプション）
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-        .then(() => console.log('✅ サービスワーカーが登録されました'))
-        .catch(() => console.log('❌ サービスワーカーの登録に失敗しました'));
-}
+// サービスワーカー登録は削除（不要なファイルの404エラーを防ぐため）
