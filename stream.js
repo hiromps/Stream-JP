@@ -449,12 +449,38 @@ class StreamDashboard {
     }
 
     getBadgeObtainMethod(badgeId, availability) {
-        // バッジIDに基づいて詳細な入手方法を返す（badge-detail.jsから取得）
+        // 動的な期間情報を生成
+        const getDynamicPeriodText = (availability) => {
+            if (!availability || !availability.startDate || !availability.endDate) {
+                return 'イベント期間中';
+            }
+            
+            const startDate = new Date(availability.startDate);
+            const endDate = new Date(availability.endDate);
+            
+            // 日本語の日付フォーマット
+            const formatDate = (date) => {
+                const year = date.getFullYear();
+                const month = date.getMonth() + 1;
+                const day = date.getDate();
+                return `${year}年${month}月${day}日`;
+            };
+            
+            // 開始日と終了日が同じ場合
+            if (startDate.toDateString() === endDate.toDateString()) {
+                return `${formatDate(startDate)}のイベント期間中`;
+            }
+            
+            // 異なる場合
+            return `${formatDate(startDate)} - ${formatDate(endDate)}の期間内`;
+        };
+        
+        // バッジIDに基づいて詳細な入手方法を返す（動的期間対応）
         const badgeObtainMethods = {
             'legendus': {
                 ja: {
                     requirements: [
-                        '2025年6月28-29日のイベント期間中に参加',
+                        `${getDynamicPeriodText(availability)}に参加`,
                         'fps_shakaまたはlegendus_shakaの配信を視聴',
                         '最低30分間の継続視聴が必要',
                         'Twitchアカウントでログイン済み'
@@ -464,7 +490,7 @@ class StreamDashboard {
             'marathon-reveal-runner': {
                 ja: {
                     requirements: [
-                        '2025年4月11日7:45 AM PT - 4月12日4:00 PM PTの期間内',
+                        `${getDynamicPeriodText(availability)}`,
                         'Marathonディレクトリ内のチャンネルに新規購読',
                         'ギフト購読でも獲得可能',
                         'Prime購読は対象外'
@@ -474,7 +500,7 @@ class StreamDashboard {
             'gone-bananas': {
                 ja: {
                     requirements: [
-                        '2025年4月1-4日のApril Foolsイベント期間中',
+                        `${getDynamicPeriodText(availability)}のApril Foolsイベント`,
                         'April Foolsイベント参加配信を視聴',
                         '特別なイベントアクティビティに参加',
                         'イベント期間中にログインが必要'
@@ -484,7 +510,7 @@ class StreamDashboard {
             'elden-ring-wylder': {
                 ja: {
                     requirements: [
-                        '2025年5月29日 - 6月3日の期間内',
+                        `${getDynamicPeriodText(availability)}`,
                         'Elden Ring Nightreignのクリップを作成または共有',
                         'FromSoftwareの公式イベントに参加',
                         'Elden Ringカテゴリの配信でアクティブ'
@@ -494,7 +520,7 @@ class StreamDashboard {
             'elden-ring-recluse': {
                 ja: {
                     requirements: [
-                        '2025年5月29-30日の期間内',
+                        `${getDynamicPeriodText(availability)}`,
                         'Elden Ring SuperFanイベントに参加',
                         'FromSoftwareの公式配信を視聴',
                         'イベント期間中にElden Ring配信でアクティブ'
@@ -504,7 +530,7 @@ class StreamDashboard {
             'league-of-legends-mid-season-invitational-2025---grey': {
                 ja: {
                     requirements: [
-                        '2025年6月24日 - 7月12日8:59 AM (GMT+2)の期間内',
+                        `${getDynamicPeriodText(availability)}`,
                         'League of Legendsカテゴリのストリーマーに購読',
                         'ギフト購読でも獲得可能',
                         'Prime購読は対象外',
@@ -515,7 +541,7 @@ class StreamDashboard {
             'league-of-legends-mid-season-invitational-2025---purple': {
                 ja: {
                     requirements: [
-                        '2025年6月24日 - 7月12日8:59 AM (GMT+2)の期間内',
+                        `${getDynamicPeriodText(availability)}`,
                         'League of Legendsカテゴリのストリーマーに購読',
                         'ギフト購読でも獲得可能',
                         'Prime購読は対象外',
@@ -526,7 +552,7 @@ class StreamDashboard {
             'league-of-legends-mid-season-invitational-2025---blue': {
                 ja: {
                     requirements: [
-                        '2025年6月24日 - 7月12日8:59 AM (GMT+2)の期間内',
+                        `${getDynamicPeriodText(availability)}`,
                         'League of Legendsカテゴリのストリーマーに購読',
                         'ギフト購読でも獲得可能',
                         'Prime購読は対象外',
@@ -537,7 +563,7 @@ class StreamDashboard {
             'borderlands-4-badge---ripper': {
                 ja: {
                     requirements: [
-                        '2025年6月21日のBorderlands 4 Fan Fest期間中',
+                        `${getDynamicPeriodText(availability)}のBorderlands 4 Fan Fest`,
                         'Borderlands 4関連の配信を視聴',
                         'Gearbox公式イベントに参加',
                         'Borderlands 4カテゴリでアクティブ'
@@ -547,7 +573,7 @@ class StreamDashboard {
             'borderlands-4-badge---vault-symbol': {
                 ja: {
                     requirements: [
-                        '2025年6月21日のBorderlands 4 Fan Fest期間中',
+                        `${getDynamicPeriodText(availability)}のBorderlands 4 Fan Fest`,
                         'Borderlands 4関連の配信を視聴',
                         'Gearbox公式イベントに参加',
                         'Borderlands 4カテゴリでアクティブ'
@@ -587,10 +613,20 @@ class StreamDashboard {
         if (availability && availability.status === 'limited' && availability.endDate) {
             const now = new Date();
             const endDate = new Date(availability.endDate);
-            const daysRemaining = Math.ceil((endDate - now) / (1000 * 60 * 60 * 24));
+            const hoursRemaining = (endDate - now) / (1000 * 60 * 60);
             
-            if (daysRemaining > 0) {
-                detail += ` あと${daysRemaining}日で入手期間が終了します。`;
+            if (hoursRemaining > 0) {
+                if (hoursRemaining < 24) {
+                    const hours = Math.ceil(hoursRemaining);
+                    detail += ` あと${hours}時間で入手期間が終了します。`;
+                } else {
+                    const daysRemaining = Math.floor(hoursRemaining / 24);
+                    if (daysRemaining === 0) {
+                        detail += ` 本日で入手期間が終了します。`;
+                    } else {
+                        detail += ` あと${daysRemaining}日で入手期間が終了します。`;
+                    }
+                }
             }
         }
         
