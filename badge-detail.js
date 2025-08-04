@@ -130,6 +130,60 @@ const badgeAvailabilityPeriods = {
         start: '2024-06-07T00:00:00Z',
         end: '2024-06-09T23:59:59Z',
         description: 'Destiny 2 raid race June 7-9, 2024'
+    },
+    'evo-2025': {
+        type: 'time-limited',
+        start: '2025-08-01T00:00:00Z',
+        end: '2025-08-04T23:59:59Z',
+        description: 'Evo 2025 fighting game tournament August 1-4, 2025'
+    },
+    'share-the-love': {
+        type: 'time-limited',
+        start: '2025-02-14T00:00:00Z',
+        end: '2025-02-14T23:59:59Z',
+        description: 'Share the Love Valentine\'s Day 2025'
+    },
+    'raging-wolf-helm': {
+        type: 'time-limited',
+        start: '2024-06-20T00:00:00Z',
+        end: '2024-06-22T23:59:59Z',
+        description: 'Elden Ring collaboration event June 2024'
+    },
+    'speedons-5-badge': {
+        type: 'time-limited',
+        start: '2025-02-24T00:00:00Z',
+        end: '2025-02-24T23:59:59Z',
+        description: 'Speedons 5 event February 24, 2025'
+    },
+    'ruby-pixel-heart---together-for-good-24': {
+        type: 'time-limited',
+        start: '2024-12-02T00:00:00Z',
+        end: '2024-12-15T23:59:59Z',
+        description: 'Together for Good 2024 December 2-15, 2024'
+    },
+    'purple-pixel-heart---together-for-good-24': {
+        type: 'time-limited',
+        start: '2024-12-02T00:00:00Z',
+        end: '2024-12-15T23:59:59Z', 
+        description: 'Together for Good 2024 December 2-15, 2024'
+    },
+    'la-velada-iv': {
+        type: 'time-limited',
+        start: '2024-07-13T00:00:00Z',
+        end: '2024-07-14T23:59:59Z',
+        description: 'La Velada del Año IV July 13, 2024'
+    },
+    'la-velada-v-badge': {
+        type: 'time-limited',
+        start: '2025-07-26T16:45:00Z',
+        end: '2025-07-27T01:30:00Z',
+        description: 'La Velada del Año V July 26, 2025'
+    },
+    'zevent-2024': {
+        type: 'time-limited',
+        start: '2024-09-06T18:00:00Z',
+        end: '2024-09-08T23:59:59Z',
+        description: 'ZEVENT 2024 charity marathon September 6-8, 2024'
     }
 };
 
@@ -805,6 +859,254 @@ const badgeObtainMethods = {
             ],
             availability: 'available',
             url: 'https://www.streamdatabase.com/twitch/global-badges/clips-leader/1'
+        }
+    },
+    'evo-2025': {
+        ja: {
+            title: 'Evo 2025',
+            description: 'Evo 2025イベント期間中（2025年8月1-4日）に対象ゲームの配信チャンネルにサブスクライブすることで入手できました。',
+            requirements: [
+                '2025年8月1-4日のEvo 2025期間中に参加',
+                '以下のゲームを配信しているチャンネルにサブスクライブ:',
+                '• Street Fighter 6',
+                '• TEKKEN 8',
+                '• Fatal Fury: City of the Wolves',
+                '• Guilty Gear -Strive-',
+                'Prime Gaming サブスクリプションは対象外',
+                'Street Fighter 6の場合、バッジ取得には2回のサブスクが必要（1回目でGuileコスチューム、2回目でバッジ）'
+            ],
+            availability: 'unavailable',
+            url: 'https://evo.gg'
+        },
+        en: {
+            title: 'Evo 2025',
+            description: 'Obtained by subscribing to channels streaming eligible games during Evo 2025 event (August 1-4, 2025).',
+            requirements: [
+                'Subscribe during Evo 2025 event period (August 1-4, 2025)',
+                'Subscribe to channels streaming:',
+                '• Street Fighter 6',
+                '• TEKKEN 8',
+                '• Fatal Fury: City of the Wolves', 
+                '• Guilty Gear -Strive-',
+                'Prime Gaming subscriptions do NOT count',
+                'For Street Fighter 6: 2 subscriptions required for badge (1st for Guile costume, 2nd for badge)'
+            ],
+            availability: 'unavailable',
+            url: 'https://evo.gg'
+        }
+    },
+    'share-the-love': {
+        ja: {
+            title: 'Share the Love バレンタイン 2025',
+            description: 'バレンタインデー（2025年2月14日）に愛を共有するための特別なイベントバッジです。',
+            requirements: [
+                '2025年2月14日のバレンタインデーに参加',
+                '愛をテーマにした特別なアクティビティに参加',
+                'Share the Love イベント期間中の配信視聴またはアクティビティ参加',
+                'Twitchアカウントでログイン済み'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/share-the-love/1'
+        },
+        en: {
+            title: 'Share the Love Valentine\'s 2025',
+            description: 'Special Valentine\'s Day badge (February 14, 2025) for sharing love in the community.',
+            requirements: [
+                'Participate on Valentine\'s Day (February 14, 2025)',
+                'Join love-themed special activities',
+                'Watch streams or participate in activities during Share the Love event',
+                'Must be logged in with Twitch account'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/share-the-love/1'
+        }
+    },
+    'raging-wolf-helm': {
+        ja: {
+            title: 'Raging Wolf Helm',
+            description: 'Elden Ring関連の特別イベント（2024年6月20日頃）で入手できました。狼の兜をモチーフにしたバッジです。',
+            requirements: [
+                '2024年6月20日頃のElden Ringイベント期間中に参加',
+                'Elden Ringカテゴリの配信を視聴',
+                '特定のElden Ring関連アクティビティに参加',
+                'イベント期間中のアクティブな参加が必要'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/raging-wolf-helm/1'
+        },
+        en: {
+            title: 'Raging Wolf Helm',
+            description: 'Obtained during a special Elden Ring event (around June 20, 2024). Features a wolf helmet design.',
+            requirements: [
+                'Participate during Elden Ring event period (around June 20, 2024)',
+                'Watch streams in Elden Ring category',
+                'Participate in specific Elden Ring-related activities',
+                'Active participation during event period required'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/raging-wolf-helm/1'
+        }
+    },
+    'speedons-5-badge': {
+        ja: {
+            title: 'Speedons 5 バッジ',
+            description: 'Speedons 5イベント（2025年2月24日）で入手できました。スピードラン関連の特別イベントバッジです。',
+            requirements: [
+                '2025年2月24日のSpeedons 5イベント期間中に参加',
+                'スピードラン関連の配信を視聴',
+                'Speedons 5イベントの特定アクティビティに参加',
+                'イベント配信を一定時間視聴'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/speedons-5-badge/1'
+        },
+        en: {
+            title: 'Speedons 5 Badge',
+            description: 'Obtained during Speedons 5 event (February 24, 2025). Special speedrunning event badge.',
+            requirements: [
+                'Participate during Speedons 5 event (February 24, 2025)',
+                'Watch speedrunning-related streams',
+                'Participate in specific Speedons 5 event activities',
+                'Watch event streams for required duration'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/speedons-5-badge/1'
+        }
+    },
+    'ruby-pixel-heart---together-for-good-24': {
+        ja: {
+            title: 'Ruby Pixel Heart - Together for Good 2024',
+            description: 'Twitch Together for Good 2024チャリティイベント期間中（2024年12月2-15日）にTwitchチャリティツールを通じて累計25ドル以上寄付することで入手できました。',
+            requirements: [
+                '2024年12月2-15日のTogether for Good期間内',
+                'Twitchチャリティツールを通じて累計25ドル以上寄付',
+                '複数のチャンネルでの寄付も累計に含まれる',
+                'バッジは寄付後72時間以内に付与（週末除く）'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/ruby-pixel-heart---together-for-good-24/1'
+        },
+        en: {
+            title: 'Ruby Pixel Heart - Together for Good 2024',
+            description: 'Obtained by donating $25+ cumulatively through the Twitch Charity tool during Together for Good 2024 (December 2-15, 2024).',
+            requirements: [
+                'Donate during December 2-15, 2024 Together for Good event',
+                'Cumulative donations of $25+ through Twitch Charity tool',
+                'Donations across multiple channels count toward total',
+                'Badge delivered within 72 hours (weekends excluded)'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/ruby-pixel-heart---together-for-good-24/1'
+        }
+    },
+    'purple-pixel-heart---together-for-good-24': {
+        ja: {
+            title: 'Purple Pixel Heart - Together for Good 2024',
+            description: 'Twitch Together for Good 2024チャリティイベント期間中（2024年12月2-15日）にTwitchチャリティツールを通じて累計10ドル以上寄付することで入手できました。',
+            requirements: [
+                '2024年12月2-15日のTogether for Good期間内',
+                'Twitchチャリティツールを通じて累計10ドル以上寄付',
+                '複数のチャンネルでの寄付も累計に含まれる',
+                'バッジは寄付後72時間以内に付与（週末除く）'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/purple-pixel-heart---together-for-good-24/1'
+        },
+        en: {
+            title: 'Purple Pixel Heart - Together for Good 2024',
+            description: 'Obtained by donating $10+ cumulatively through the Twitch Charity tool during Together for Good 2024 (December 2-15, 2024).',
+            requirements: [
+                'Donate during December 2-15, 2024 Together for Good event',
+                'Cumulative donations of $10+ through Twitch Charity tool',
+                'Donations across multiple channels count toward total',
+                'Badge delivered within 72 hours (weekends excluded)'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/purple-pixel-heart---together-for-good-24/1'
+        }
+    },
+    'la-velada-iv': {
+        ja: {
+            title: 'La Velada del Año IV',
+            description: 'La Velada del Año IV（第4回ベラーダ）イベント（2024年7月13日）で入手できました。スペインの人気YouTuber TheGrefgが主催するボクシングイベントです。',
+            requirements: [
+                '2024年7月13日のLa Velada del Año IVイベント期間中に参加',
+                'TheGrefgまたは関連チャンネルのライブ配信を視聴',
+                'イベント配信を一定時間視聴',
+                'La Velada IVイベント特別配信が対象'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/la-velada-iv/1'
+        },
+        en: {
+            title: 'La Velada del Año IV',
+            description: 'Obtained during La Velada del Año IV (The Evening of the Year IV) event (July 13, 2024). A boxing event hosted by popular Spanish YouTuber TheGrefg.',
+            requirements: [
+                'Participate during La Velada del Año IV event (July 13, 2024)',
+                'Watch TheGrefg or related channels\' live streams',
+                'Watch event streams for required duration',
+                'Only La Velada IV special event streams counted'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/la-velada-iv/1'
+        }
+    },
+    'la-velada-v-badge': {
+        ja: {
+            title: 'La Velada del Año V',
+            description: 'La Velada del Año V（第5回ベラーダ）イベント（2025年7月26日）で入手できました。セビリアのLa Cartuja Stadiumで開催された史上最大規模のストリーマーボクシングイベントです。',
+            requirements: [
+                '2025年7月26日16:45 - 7月27日01:30（UTC）の期間中に参加',
+                'ibaiのTwitchチャンネルでライブ配信を視聴',
+                '最低5分間の継続視聴が必要',
+                'TheGrefg vs WestCOL のメインイベントを含む7試合を配信',
+                'Twitchアカウントでログイン済み'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/la-velada-v-badge/1'
+        },
+        en: {
+            title: 'La Velada del Año V',
+            description: 'Obtained during La Velada del Año V (The Evening of the Year V) event (July 26, 2025). The biggest streamer boxing event ever held at La Cartuja Stadium in Seville.',
+            requirements: [
+                'Watch during July 26, 16:45 - July 27, 01:30 (UTC), 2025',
+                'Watch the live stream on ibai\'s Twitch channel',
+                'Minimum 5 minutes continuous viewing required',
+                'Event featured 7 boxing matches including TheGrefg vs WestCOL main event',
+                'Must be logged in with Twitch account'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/la-velada-v-badge/1'
+        }
+    },
+    'zevent-2024': {
+        ja: {
+            title: 'ZEVENT 2024',
+            description: 'ZEVENT 2024（2024年9月6-8日）で入手できました。ZeratoRが主催するフランス最大のチャリティストリーミングマラソンイベントです。',
+            requirements: [
+                '2024年9月6日18:00 - 9月8日23:59（UTC）の期間中に参加',
+                'ZEVENT 2024の公式チャンネルまたは参加ストリーマーの配信を視聴',
+                '最低15分間の継続視聴が必要',
+                'Secours Populaire Français等の5つの慈善団体を支援',
+                '現地36名、リモート100名の計136名のストリーマーが参加',
+                'Twitchアカウントでログイン済み'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/zevent-2024/1'
+        },
+        en: {
+            title: 'ZEVENT 2024',
+            description: 'Obtained during ZEVENT 2024 (September 6-8, 2024). France\'s biggest charity streaming marathon organized by ZeratoR.',
+            requirements: [
+                'Watch during September 6, 18:00 - September 8, 23:59 (UTC), 2024',
+                'Watch ZEVENT 2024 official channels or participating streamers',
+                'Minimum 15 minutes continuous viewing required',
+                'Supporting 5 charities including Secours Populaire Français',
+                '136 streamers participated: 36 on-site, 100 remote',
+                'Must be logged in with Twitch account'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/zevent-2024/1'
         }
     },
     // デフォルトの入手方法（不明なバッジ用）

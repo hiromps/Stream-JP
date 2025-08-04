@@ -1,100 +1,105 @@
 # CLAUDE.md
 
-このファイルは、このリポジトリでコードを扱う際のClaude Code (claude.ai/code) へのガイダンスを提供します。
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## プロジェクト概要
 
-StreamPartnerJPは、Twitch Helix APIを使用してTwitchのグローバルバッジを表示するFlaskベースのWebアプリケーション（Twitchグローバルバッジビューアー）です。
+StreamPartnerJPは、Twitch Helix APIを使用してTwitchのグローバルバッジとエモートを表示するFlaskベースのWebアプリケーションです。多言語対応（日本語・英語）とVercelでのデプロイをサポートしています。
 
 ## 技術スタック
 
 - **バックエンド**: Python 3 + Flask
 - **フロントエンド**: Vanilla JavaScript、HTML5、CSS3
+- **デプロイ**: Vercel (Serverless Functions)
 - **API**: Twitch Helix API
-- **主要な依存関係**:
-  - `flask` - Webフレームワーク
-  - `flask-cors` - CORS処理
-  - `requests` - Twitch API用HTTPクライアント
+- **外部データソース**: Stream Database API（バッジ・エモート追加日情報）
 
 ## 開発コマンド
 
-### アプリケーションの実行
+### 依存関係のインストール
+```bash
+pip install -r requirements.txt
+```
+
+### ローカル開発サーバーの実行
 ```bash
 python app.py
 ```
 これにより、`http://0.0.0.0:5000`でFlask開発サーバーがデバッグモード有効で起動します。
 
-### 依存関係のインストール
-まず、仮想環境を作成します（推奨）：
-```bash
-python -m venv venv
-source venv/bin/activate  # Windowsの場合: venv\Scripts\activate
+### 環境変数の設定
+`.env`ファイルを作成し、Twitch API認証情報を設定：
 ```
-
-次に必要なパッケージをインストール：
-```bash
-pip install flask flask-cors requests
+TWITCH_CLIENT_ID=your_client_id
+TWITCH_CLIENT_SECRET=your_client_secret
 ```
 
 ## アーキテクチャ
 
-アプリケーションはシンプルなクライアント・サーバーアーキテクチャに従っています：
+### デュアルデプロイ構造
+アプリケーションは2つのFlask実装を持っています：
 
-1. **バックエンド (`app.py`)**: 
-   - Twitch APIへのプロキシとして機能するFlaskサーバー
-   - トークンキャッシュ付きのTwitch OAuth2認証を処理
-   - 静的ファイルの配信と`/api/badges`エンドポイントの提供
-   - Twitch APIリクエストをプロキシすることでCORS問題を回避
+1. **ローカル開発用 (`app.py`)**:
+   - 完全なFlaskアプリケーション
+   - 静的ファイル配信
+   - バッジ自動検出・監視システム
+   - 管理者API（新バッジ管理）
 
-2. **フロントエンド**:
-   - `index.html`: メインページ構造
-   - `script.js`: バッジデータの取得とUIインタラクションの処理
-   - `style.css`: Twitchテーマのダークモードスタイリング
+2. **Vercelデプロイ用 (`api/index.py`)**:
+   - Serverless Functions対応の軽量版
+   - 静的ファイルはVercelが直接配信
+   - 必要最小限のAPI機能のみ
 
-## 主要な実装詳細
+### フロントエンド構造
+- **メインページ** (`index.html` + `script.js`): バッジ一覧表示
+- **エモートページ** (`emotes.html` + `emotes-script.js`): エモート一覧表示  
+- **詳細ページ** (`badge-detail.html` + `badge-detail.js`): 個別バッジ詳細
+- **管理ページ** (`admin.html`): 新バッジ承認システム
+- **ストリームページ** (`stream.html` + `stream.js`): 動的バッジ表示
 
-### API認証
-アプリはTwitch OAuth2クライアント認証フローを使用。APIコールを最小化するためアクセストークンはキャッシュされます：
-- トークンキャッシュには有効期限の追跡が含まれる
-- 期限切れ時の自動トークン更新
-- `get_app_access_token()`関数に実装
+### 主要機能
 
-### 現在の問題点
+#### バッジ・エモート管理システム
+- Stream Database APIからの正確な追加日情報統合
+- 自動新バッジ検出システム (`BadgeAutoUpdater`クラス in `app.py:161-340`)
+- 管理者承認ワークフロー
 
-1. **ハードコードされた認証情報**: Twitch API認証情報が`app.py`に直接記述（10-11行目）
-   - 環境変数に移行すべき
-   - `.env`ファイルサポートのため`python-dotenv`の使用を検討
+#### 多言語対応
+- 日本語・英語の動的切り替え
+- JavaScript多言語化システム (`script.js`内の国際化機能)
 
-2. **依存関係管理の欠如**: `requirements.txt`ファイルが存在しない
-
-3. **認証情報欠落時のエラー処理なし**: CLIENT_ID/CLIENT_SECRETが無効な場合アプリは失敗する
-
-## 推奨される改善点
-
-このコードベースで作業する際は以下を検討してください：
-
-1. `requirements.txt`の作成：
-   ```
-   flask==2.3.2
-   flask-cors==4.0.0
-   requests==2.31.0
-   python-dotenv==1.0.0
-   ```
-
-2. 環境変数サポートの追加：
-   ```python
-   from dotenv import load_dotenv
-   load_dotenv()
-   CLIENT_ID = os.getenv('TWITCH_CLIENT_ID')
-   CLIENT_SECRET = os.getenv('TWITCH_CLIENT_SECRET')
-   ```
-
-3. 環境変数欠落時のエラー処理の追加
-
-4. `/api/badges`エンドポイントへのリクエストレート制限の検討
+#### データ拡張機能
+- Twitchネイティブデータにタイムスタンプ付与
+- アニメーション対応エモートURL生成
+- バッジ入手方法詳細情報
 
 ## APIエンドポイント
 
-- `GET /` - メインHTMLページの配信
-- `GET /api/badges` - Twitchグローバルバッジデータを返す
-- `GET /<path>` - 静的ファイル（CSS、JS）の配信
+### 公開API
+- `GET /` - メインページ
+- `GET /stream` - ストリームページ  
+- `GET /api/badges` - Twitchグローバルバッジデータ（Stream Database拡張）
+- `GET /api/emotes` - Twitchグローバルエモートデータ（Stream Database拡張）
+
+### 管理者API（app.pyのみ）
+- `GET /api/admin/pending-badges` - 承認待ち新バッジ一覧
+- `POST /api/admin/approve-badge` - バッジ情報承認
+- `GET /api/admin/force-check` - 手動バッジチェック実行
+
+## 重要な実装詳細
+
+### 認証とトークン管理
+- 環境変数ベースの認証情報管理（`.env`ファイル使用）
+- トークンキャッシュシステム（`get_app_access_token()`）
+- 認証情報欠落時の適切なエラーハンドリング
+
+### データソース統合
+バッジ・エモートのタイムスタンプデータは以下の優先順位で処理：
+1. Stream Database公式サイトからの正確な追加日（`badge_timestamps`辞書）
+2. 部分一致による推定
+3. 不明な場合は空データ
+
+### 自動化システム
+- 新バッジの自動検出（1時間間隔）
+- 自動情報収集とキューイング
+- 管理者承認待ちシステム

@@ -1,0 +1,1311 @@
+{
+  "metadata": {
+    "last_updated": "2025-08-04T18:47:20.987638",
+    "version": "1.0",
+    "source": "stream_database_integration",
+    "total_badges": 0
+  },
+  "timestamps": {},
+  "badge_details": {
+    "user-anniversary": {
+      "name": "User Anniversary",
+      "description": "Badge discovered: user-anniversary",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986934",
+      "source": "html_extraction"
+    },
+    "firewatch_1": {
+      "name": "Firewatch_1",
+      "description": "Badge discovered: firewatch_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987010",
+      "source": "html_extraction"
+    },
+    "moderator": {
+      "name": "Moderator",
+      "description": "Badge discovered: moderator",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987035",
+      "source": "html_extraction"
+    },
+    "elden-ring--nightreign-clip-badge---wylder": {
+      "name": "Elden Ring  Nightreign Clip Badge   Wylder",
+      "description": "Badge discovered: elden-ring--nightreign-clip-badge---wylder",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986952",
+      "source": "html_extraction"
+    },
+    "evo-2025": {
+      "name": "Evo 2025",
+      "description": "Evo 2025 badge",
+      "created_at": "2025-07-31T00:00:00.000Z",
+      "user_count": 0,
+      "obtaining_method": {
+        "event_period": "2025年8月1日〜4日（終了済み）",
+        "requirements": [
+          "以下のゲームを配信しているチャンネルにサブスクライブする",
+          "• Street Fighter 6",
+          "• TEKKEN 8", 
+          "• Fatal Fury: City of the Wolves",
+          "• Guilty Gear -Strive-"
+        ],
+        "special_notes": [
+          "Prime Gaming サブスクリプションはカウントされません",
+          "Street Fighter 6の場合、バッジを取得するには2回のサブスクリプションが必要（1回目でGuileコスチューム、2回目でバッジ）"
+        ],
+        "event_status": "終了",
+        "last_verified": "2025-08-04T00:00:00.000Z"
+      },
+      "last_updated": "2025-08-04T00:00:00.000Z",
+      "source": "manual_research"
+    },
+    "twitch-dj": {
+      "name": "Twitch Dj",
+      "description": "Badge discovered: twitch-dj",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986947",
+      "source": "html_extraction"
+    },
+    "destiny-2-final-shape-raid-race": {
+      "name": "Destiny 2 Final Shape Raid Race",
+      "description": "Badge discovered: destiny-2-final-shape-raid-race",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987065",
+      "source": "html_extraction"
+    },
+    "artist-badge": {
+      "name": "Artist Badge",
+      "description": "Badge discovered: artist-badge",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987034",
+      "source": "html_extraction"
+    },
+    "borderlands-4-badge---vault-symbol": {
+      "name": "Borderlands 4 Badge   Vault Symbol",
+      "description": "Badge discovered: borderlands-4-badge---vault-symbol",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987039",
+      "source": "html_extraction"
+    },
+    "devilian_1": {
+      "name": "Devilian_1",
+      "description": "Badge discovered: devilian_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987053",
+      "source": "html_extraction"
+    },
+    "clip-the-halls": {
+      "name": "Clip The Halls",
+      "description": "Badge discovered: clip-the-halls",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987006",
+      "source": "html_extraction"
+    },
+    "bits-leader": {
+      "name": "Bits Leader",
+      "description": "Badge discovered: bits-leader",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987018",
+      "source": "html_extraction"
+    },
+    "game-developer": {
+      "name": "Game Developer",
+      "description": "Badge discovered: game-developer",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986951",
+      "source": "html_extraction"
+    },
+    "twitchbot": {
+      "name": "Twitchbot",
+      "description": "Badge discovered: twitchbot",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986931",
+      "source": "html_extraction"
+    },
+    "duelyst_2": {
+      "name": "Duelyst_2",
+      "description": "Badge discovered: duelyst_2",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987003",
+      "source": "html_extraction"
+    },
+    "treasure-adventure-world_1": {
+      "name": "Treasure Adventure World_1",
+      "description": "Badge discovered: treasure-adventure-world_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986902",
+      "source": "html_extraction"
+    },
+    "battlechefbrigade_3": {
+      "name": "Battlechefbrigade_3",
+      "description": "Badge discovered: battlechefbrigade_3",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986975",
+      "source": "html_extraction"
+    },
+    "the-surge_1": {
+      "name": "The Surge_1",
+      "description": "Badge discovered: the-surge_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987031",
+      "source": "html_extraction"
+    },
+    "twitch-recap-2023": {
+      "name": "Twitch Recap 2023",
+      "description": "Badge discovered: twitch-recap-2023",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987043",
+      "source": "html_extraction"
+    },
+    "overwatch-league-insider_2019A": {
+      "name": "Overwatch League Insider_2019A",
+      "description": "Badge discovered: overwatch-league-insider_2019A",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987075",
+      "source": "html_extraction"
+    },
+    "broken-age_1": {
+      "name": "Broken Age_1",
+      "description": "Badge discovered: broken-age_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986955",
+      "source": "html_extraction"
+    },
+    "jackbox-party-pack_1": {
+      "name": "Jackbox Party Pack_1",
+      "description": "Badge discovered: jackbox-party-pack_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987074",
+      "source": "html_extraction"
+    },
+    "bits": {
+      "name": "Bits",
+      "description": "Badge discovered: bits",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986912",
+      "source": "html_extraction"
+    },
+    "cuphead_1": {
+      "name": "Cuphead_1",
+      "description": "Badge discovered: cuphead_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986903",
+      "source": "html_extraction"
+    },
+    "gold-pixel-heart---together-for-good-24": {
+      "name": "Gold Pixel Heart   Together For Good 24",
+      "description": "Badge discovered: gold-pixel-heart---together-for-good-24",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986980",
+      "source": "html_extraction"
+    },
+    "psychonauts_1": {
+      "name": "Psychonauts_1",
+      "description": "Badge discovered: psychonauts_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986990",
+      "source": "html_extraction"
+    },
+    "arcane-season-2-premiere": {
+      "name": "Arcane Season 2 Premiere",
+      "description": "Badge discovered: arcane-season-2-premiere",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987014",
+      "source": "html_extraction"
+    },
+    "duelyst_5": {
+      "name": "Duelyst_5",
+      "description": "Badge discovered: duelyst_5",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987026",
+      "source": "html_extraction"
+    },
+    "gone-bananas": {
+      "name": "Gone Bananas",
+      "description": "Badge discovered: gone-bananas",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986905",
+      "source": "html_extraction"
+    },
+    "anomaly-2_1": {
+      "name": "Anomaly 2_1",
+      "description": "Badge discovered: anomaly-2_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986986",
+      "source": "html_extraction"
+    },
+    "purple-pixel-heart---together-for-good-24": {
+      "name": "Purple Pixel Heart   Together For Good 24",
+      "description": "Badge discovered: purple-pixel-heart---together-for-good-24",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986961",
+      "source": "html_extraction"
+    },
+    "frozen-cortext_1": {
+      "name": "Frozen Cortext_1",
+      "description": "Badge discovered: frozen-cortext_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986921",
+      "source": "html_extraction"
+    },
+    "subscriber": {
+      "name": "Subscriber",
+      "description": "Badge discovered: subscriber",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986993",
+      "source": "html_extraction"
+    },
+    "60-seconds_2": {
+      "name": "60 Seconds_2",
+      "description": "Badge discovered: 60-seconds_2",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987000",
+      "source": "html_extraction"
+    },
+    "deceit_1": {
+      "name": "Deceit_1",
+      "description": "Badge discovered: deceit_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986960",
+      "source": "html_extraction"
+    },
+    "getting-over-it_2": {
+      "name": "Getting Over It_2",
+      "description": "Badge discovered: getting-over-it_2",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986979",
+      "source": "html_extraction"
+    },
+    "elden-ring-wylder": {
+      "name": "Elden Ring Wylder",
+      "description": "Badge discovered: elden-ring-wylder",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987030",
+      "source": "html_extraction"
+    },
+    "extension": {
+      "name": "Extension",
+      "description": "Badge discovered: extension",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987032",
+      "source": "html_extraction"
+    },
+    "global_mod": {
+      "name": "Global_Mod",
+      "description": "Badge discovered: global_mod",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986936",
+      "source": "html_extraction"
+    },
+    "twitchconEU2023": {
+      "name": "Twitchconeu2023",
+      "description": "Badge discovered: twitchconEU2023",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986908",
+      "source": "html_extraction"
+    },
+    "sub-gifter": {
+      "name": "Sub Gifter",
+      "description": "Badge discovered: sub-gifter",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987040",
+      "source": "html_extraction"
+    },
+    "bits-charity": {
+      "name": "Bits Charity",
+      "description": "Badge discovered: bits-charity",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986989",
+      "source": "html_extraction"
+    },
+    "titan-souls_1": {
+      "name": "Titan Souls_1",
+      "description": "Badge discovered: titan-souls_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986913",
+      "source": "html_extraction"
+    },
+    "twitchconNA2020": {
+      "name": "Twitchconna2020",
+      "description": "Badge discovered: twitchconNA2020",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986991",
+      "source": "html_extraction"
+    },
+    "twitchconEU2022": {
+      "name": "Twitchconeu2022",
+      "description": "Badge discovered: twitchconEU2022",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986963",
+      "source": "html_extraction"
+    },
+    "anomaly-warzone-earth_1": {
+      "name": "Anomaly Warzone Earth_1",
+      "description": "Badge discovered: anomaly-warzone-earth_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986957",
+      "source": "html_extraction"
+    },
+    "heavy-bullets_1": {
+      "name": "Heavy Bullets_1",
+      "description": "Badge discovered: heavy-bullets_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986901",
+      "source": "html_extraction"
+    },
+    "glitchcon2020": {
+      "name": "Glitchcon2020",
+      "description": "Badge discovered: glitchcon2020",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986891",
+      "source": "html_extraction"
+    },
+    "premium": {
+      "name": "Premium",
+      "description": "Badge discovered: premium",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986925",
+      "source": "html_extraction"
+    },
+    "superhot_1": {
+      "name": "Superhot_1",
+      "description": "Badge discovered: superhot_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987023",
+      "source": "html_extraction"
+    },
+    "broadcaster": {
+      "name": "Broadcaster",
+      "description": "Badge discovered: broadcaster",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987060",
+      "source": "html_extraction"
+    },
+    "hype-train": {
+      "name": "Hype Train",
+      "description": "Badge discovered: hype-train",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986985",
+      "source": "html_extraction"
+    },
+    "creator-cs-go-2022": {
+      "name": "Creator Cs Go 2022",
+      "description": "Badge discovered: creator-cs-go-2022",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987047",
+      "source": "html_extraction"
+    },
+    "darkest-dungeon_1": {
+      "name": "Darkest Dungeon_1",
+      "description": "Badge discovered: darkest-dungeon_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986938",
+      "source": "html_extraction"
+    },
+    "duelyst_7": {
+      "name": "Duelyst_7",
+      "description": "Badge discovered: duelyst_7",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986911",
+      "source": "html_extraction"
+    },
+    "the-golden-predictor-of-the-game-awards-2023": {
+      "name": "The Golden Predictor Of The Game Awards 2023",
+      "description": "Badge discovered: the-golden-predictor-of-the-game-awards-2023",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986968",
+      "source": "html_extraction"
+    },
+    "destiny-2-the-final-shape-streamer": {
+      "name": "Destiny 2 The Final Shape Streamer",
+      "description": "Badge discovered: destiny-2-the-final-shape-streamer",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987061",
+      "source": "html_extraction"
+    },
+    "getting-over-it_1": {
+      "name": "Getting Over It_1",
+      "description": "Badge discovered: getting-over-it_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987051",
+      "source": "html_extraction"
+    },
+    "H1Z1_1": {
+      "name": "H1Z1_1",
+      "description": "Badge discovered: H1Z1_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986920",
+      "source": "html_extraction"
+    },
+    "brawlhalla_1": {
+      "name": "Brawlhalla_1",
+      "description": "Badge discovered: brawlhalla_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986953",
+      "source": "html_extraction"
+    },
+    "marathon-reveal-runner": {
+      "name": "Marathon Reveal Runner",
+      "description": "Badge discovered: marathon-reveal-runner",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987073",
+      "source": "html_extraction"
+    },
+    "overwatch-league-insider_2019B": {
+      "name": "Overwatch League Insider_2019B",
+      "description": "Badge discovered: overwatch-league-insider_2019B",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987048",
+      "source": "html_extraction"
+    },
+    "hello_neighbor_1": {
+      "name": "Hello_Neighbor_1",
+      "description": "Badge discovered: hello_neighbor_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986945",
+      "source": "html_extraction"
+    },
+    "superultracombo-2023": {
+      "name": "Superultracombo 2023",
+      "description": "Badge discovered: superultracombo-2023",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986941",
+      "source": "html_extraction"
+    },
+    "1979-revolution_1": {
+      "name": "1979 Revolution_1",
+      "description": "Badge discovered: 1979-revolution_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987015",
+      "source": "html_extraction"
+    },
+    "twitchconAmsterdam2020": {
+      "name": "Twitchconamsterdam2020",
+      "description": "Badge discovered: twitchconAmsterdam2020",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987076",
+      "source": "html_extraction"
+    },
+    "overwatch-league-insider_2018B": {
+      "name": "Overwatch League Insider_2018B",
+      "description": "Badge discovered: overwatch-league-insider_2018B",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987011",
+      "source": "html_extraction"
+    },
+    "innerspace_1": {
+      "name": "Innerspace_1",
+      "description": "Badge discovered: innerspace_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987027",
+      "source": "html_extraction"
+    },
+    "anonymous-cheerer": {
+      "name": "Anonymous Cheerer",
+      "description": "Badge discovered: anonymous-cheerer",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987078",
+      "source": "html_extraction"
+    },
+    "duelyst_1": {
+      "name": "Duelyst_1",
+      "description": "Badge discovered: duelyst_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986997",
+      "source": "html_extraction"
+    },
+    "twitch-intern-2024": {
+      "name": "Twitch Intern 2024",
+      "description": "Badge discovered: twitch-intern-2024",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987005",
+      "source": "html_extraction"
+    },
+    "ruby-pixel-heart---together-for-good-24": {
+      "name": "Ruby Pixel Heart   Together For Good 24",
+      "description": "Badge discovered: ruby-pixel-heart---together-for-good-24",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987041",
+      "source": "html_extraction"
+    },
+    "bot-badge": {
+      "name": "Bot Badge",
+      "description": "Badge discovered: bot-badge",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987044",
+      "source": "html_extraction"
+    },
+    "predictions": {
+      "name": "Predictions",
+      "description": "Badge discovered: predictions",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987062",
+      "source": "html_extraction"
+    },
+    "eso_1": {
+      "name": "Eso_1",
+      "description": "Badge discovered: eso_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986916",
+      "source": "html_extraction"
+    },
+    "gold-pixel-heart": {
+      "name": "Gold Pixel Heart",
+      "description": "Badge discovered: gold-pixel-heart",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986919",
+      "source": "html_extraction"
+    },
+    "glhf-pledge": {
+      "name": "Glhf Pledge",
+      "description": "Badge discovered: glhf-pledge",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986966",
+      "source": "html_extraction"
+    },
+    "league-of-legends-mid-season-invitational-2025---grey": {
+      "name": "League Of Legends Mid Season Invitational 2025   Grey",
+      "description": "Badge discovered: league-of-legends-mid-season-invitational-2025---grey",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986981",
+      "source": "html_extraction"
+    },
+    "partner": {
+      "name": "Partner",
+      "description": "Badge discovered: partner",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986982",
+      "source": "html_extraction"
+    },
+    "share-the-love": {
+      "name": "Share The Love",
+      "description": "Badge discovered: share-the-love",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986929",
+      "source": "html_extraction"
+    },
+    "the-surge_2": {
+      "name": "The Surge_2",
+      "description": "Badge discovered: the-surge_2",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986973",
+      "source": "html_extraction"
+    },
+    "clips-leader": {
+      "name": "Clips Leader",
+      "description": "Badge discovered: clips-leader",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987021",
+      "source": "html_extraction"
+    },
+    "raiden-v-directors-cut_1": {
+      "name": "Raiden V Directors Cut_1",
+      "description": "Badge discovered: raiden-v-directors-cut_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987054",
+      "source": "html_extraction"
+    },
+    "innerspace_2": {
+      "name": "Innerspace_2",
+      "description": "Badge discovered: innerspace_2",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987004",
+      "source": "html_extraction"
+    },
+    "twitch-intern-2023": {
+      "name": "Twitch Intern 2023",
+      "description": "Badge discovered: twitch-intern-2023",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986995",
+      "source": "html_extraction"
+    },
+    "battlerite_1": {
+      "name": "Battlerite_1",
+      "description": "Badge discovered: battlerite_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986918",
+      "source": "html_extraction"
+    },
+    "staff": {
+      "name": "Staff",
+      "description": "Badge discovered: staff",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987064",
+      "source": "html_extraction"
+    },
+    "strafe_1": {
+      "name": "Strafe_1",
+      "description": "Badge discovered: strafe_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986996",
+      "source": "html_extraction"
+    },
+    "subtember-2024": {
+      "name": "Subtember 2024",
+      "description": "Badge discovered: subtember-2024",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986959",
+      "source": "html_extraction"
+    },
+    "bubsy-the-woolies_1": {
+      "name": "Bubsy The Woolies_1",
+      "description": "Badge discovered: bubsy-the-woolies_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987077",
+      "source": "html_extraction"
+    },
+    "chatter-cs-go-2022": {
+      "name": "Chatter Cs Go 2022",
+      "description": "Badge discovered: chatter-cs-go-2022",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986958",
+      "source": "html_extraction"
+    },
+    "60-seconds_1": {
+      "name": "60 Seconds_1",
+      "description": "Badge discovered: 60-seconds_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987017",
+      "source": "html_extraction"
+    },
+    "speedons-5-badge": {
+      "name": "Speedons 5 Badge",
+      "description": "Badge discovered: speedons-5-badge",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986940",
+      "source": "html_extraction"
+    },
+    "twitch-recap-2024": {
+      "name": "Twitch Recap 2024",
+      "description": "Badge discovered: twitch-recap-2024",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987049",
+      "source": "html_extraction"
+    },
+    "evo-2025": {
+      "name": "Evo 2025",
+      "description": "Badge discovered: evo-2025",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987019",
+      "source": "html_extraction"
+    },
+    "twitchconNA2022": {
+      "name": "Twitchconna2022",
+      "description": "Badge discovered: twitchconNA2022",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987059",
+      "source": "html_extraction"
+    },
+    "this-war-of-mine_1": {
+      "name": "This War Of Mine_1",
+      "description": "Badge discovered: this-war-of-mine_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987068",
+      "source": "html_extraction"
+    },
+    "overwatch-league-insider_1": {
+      "name": "Overwatch League Insider_1",
+      "description": "Badge discovered: overwatch-league-insider_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986970",
+      "source": "html_extraction"
+    },
+    "60-seconds_3": {
+      "name": "60 Seconds_3",
+      "description": "Badge discovered: 60-seconds_3",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987070",
+      "source": "html_extraction"
+    },
+    "duelyst_3": {
+      "name": "Duelyst_3",
+      "description": "Badge discovered: duelyst_3",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987025",
+      "source": "html_extraction"
+    },
+    "kingdom-new-lands_1": {
+      "name": "Kingdom New Lands_1",
+      "description": "Badge discovered: kingdom-new-lands_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986928",
+      "source": "html_extraction"
+    },
+    "ambassador": {
+      "name": "Ambassador",
+      "description": "Badge discovered: ambassador",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987038",
+      "source": "html_extraction"
+    },
+    "turbo": {
+      "name": "Turbo",
+      "description": "Badge discovered: turbo",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987046",
+      "source": "html_extraction"
+    },
+    "frozen-synapse_1": {
+      "name": "Frozen Synapse_1",
+      "description": "Badge discovered: frozen-synapse_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986987",
+      "source": "html_extraction"
+    },
+    "no_audio": {
+      "name": "No_Audio",
+      "description": "Badge discovered: no_audio",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987057",
+      "source": "html_extraction"
+    },
+    "tyranny_1": {
+      "name": "Tyranny_1",
+      "description": "Badge discovered: tyranny_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987069",
+      "source": "html_extraction"
+    },
+    "vip": {
+      "name": "Vip",
+      "description": "Badge discovered: vip",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986907",
+      "source": "html_extraction"
+    },
+    "devil-may-cry-hd_1": {
+      "name": "Devil May Cry Hd_1",
+      "description": "Badge discovered: devil-may-cry-hd_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986948",
+      "source": "html_extraction"
+    },
+    "streamer-awards-2024": {
+      "name": "Streamer Awards 2024",
+      "description": "Badge discovered: streamer-awards-2024",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986994",
+      "source": "html_extraction"
+    },
+    "twitchcon-referral-program-2025-chrome-star": {
+      "name": "Twitchcon Referral Program 2025 Chrome Star",
+      "description": "Badge discovered: twitchcon-referral-program-2025-chrome-star",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986937",
+      "source": "html_extraction"
+    },
+    "minecraft-15th-anniversary-celebration": {
+      "name": "Minecraft 15Th Anniversary Celebration",
+      "description": "Badge discovered: minecraft-15th-anniversary-celebration",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987024",
+      "source": "html_extraction"
+    },
+    "elden-ring-recluse": {
+      "name": "Elden Ring Recluse",
+      "description": "Badge discovered: elden-ring-recluse",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986935",
+      "source": "html_extraction"
+    },
+    "borderlands-4-badge---ripper": {
+      "name": "Borderlands 4 Badge   Ripper",
+      "description": "Badge discovered: borderlands-4-badge---ripper",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987020",
+      "source": "html_extraction"
+    },
+    "twitchcon2018": {
+      "name": "Twitchcon2018",
+      "description": "Badge discovered: twitchcon2018",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986965",
+      "source": "html_extraction"
+    },
+    "the-game-awards-2023": {
+      "name": "The Game Awards 2023",
+      "description": "Badge discovered: the-game-awards-2023",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986954",
+      "source": "html_extraction"
+    },
+    "rplace-2023": {
+      "name": "Rplace 2023",
+      "description": "Badge discovered: rplace-2023",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986976",
+      "source": "html_extraction"
+    },
+    "devil-may-cry-hd_3": {
+      "name": "Devil May Cry Hd_3",
+      "description": "Badge discovered: devil-may-cry-hd_3",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987067",
+      "source": "html_extraction"
+    },
+    "clip-champ": {
+      "name": "Clip Champ",
+      "description": "Badge discovered: clip-champ",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986971",
+      "source": "html_extraction"
+    },
+    "founder": {
+      "name": "Founder",
+      "description": "Badge discovered: founder",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987055",
+      "source": "html_extraction"
+    },
+    "twitchconNA2019": {
+      "name": "Twitchconna2019",
+      "description": "Badge discovered: twitchconNA2019",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987033",
+      "source": "html_extraction"
+    },
+    "the-surge_3": {
+      "name": "The Surge_3",
+      "description": "Badge discovered: the-surge_3",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986949",
+      "source": "html_extraction"
+    },
+    "devil-may-cry-hd_4": {
+      "name": "Devil May Cry Hd_4",
+      "description": "Badge discovered: devil-may-cry-hd_4",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987007",
+      "source": "html_extraction"
+    },
+    "la-velada-iv": {
+      "name": "La Velada Iv",
+      "description": "Badge discovered: la-velada-iv",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986967",
+      "source": "html_extraction"
+    },
+    "twitchconNA2023": {
+      "name": "Twitchconna2023",
+      "description": "Badge discovered: twitchconNA2023",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987028",
+      "source": "html_extraction"
+    },
+    "warcraft": {
+      "name": "Warcraft",
+      "description": "Badge discovered: warcraft",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986988",
+      "source": "html_extraction"
+    },
+    "power-rangers": {
+      "name": "Power Rangers",
+      "description": "Badge discovered: power-rangers",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986922",
+      "source": "html_extraction"
+    },
+    "sub-gift-leader": {
+      "name": "Sub Gift Leader",
+      "description": "Badge discovered: sub-gift-leader",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986932",
+      "source": "html_extraction"
+    },
+    "twitchcon-2024---rotterdam": {
+      "name": "Twitchcon 2024   Rotterdam",
+      "description": "Badge discovered: twitchcon-2024---rotterdam",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986974",
+      "source": "html_extraction"
+    },
+    "dreamcon-2024": {
+      "name": "Dreamcon 2024",
+      "description": "Badge discovered: dreamcon-2024",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986998",
+      "source": "html_extraction"
+    },
+    "moments": {
+      "name": "Moments",
+      "description": "Badge discovered: moments",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986923",
+      "source": "html_extraction"
+    },
+    "axiom-verge_1": {
+      "name": "Axiom Verge_1",
+      "description": "Badge discovered: axiom-verge_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987072",
+      "source": "html_extraction"
+    },
+    "battlechefbrigade_2": {
+      "name": "Battlechefbrigade_2",
+      "description": "Badge discovered: battlechefbrigade_2",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986972",
+      "source": "html_extraction"
+    },
+    "elden-ring-superfan-badge---recluse": {
+      "name": "Elden Ring Superfan Badge   Recluse",
+      "description": "Badge discovered: elden-ring-superfan-badge---recluse",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987052",
+      "source": "html_extraction"
+    },
+    "admin": {
+      "name": "Admin",
+      "description": "Badge discovered: admin",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986906",
+      "source": "html_extraction"
+    },
+    "enter-the-gungeon_1": {
+      "name": "Enter The Gungeon_1",
+      "description": "Badge discovered: enter-the-gungeon_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986899",
+      "source": "html_extraction"
+    },
+    "zevent-2024": {
+      "name": "Zevent 2024",
+      "description": "Badge discovered: zevent-2024",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986943",
+      "source": "html_extraction"
+    },
+    "twitchcon-2024---san-diego": {
+      "name": "Twitchcon 2024   San Diego",
+      "description": "Badge discovered: twitchcon-2024---san-diego",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986914",
+      "source": "html_extraction"
+    },
+    "twitchcon2017": {
+      "name": "Twitchcon2017",
+      "description": "Badge discovered: twitchcon2017",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986915",
+      "source": "html_extraction"
+    },
+    "twitchconEU2019": {
+      "name": "Twitchconeu2019",
+      "description": "Badge discovered: twitchconEU2019",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986939",
+      "source": "html_extraction"
+    },
+    "vga-champ-2017": {
+      "name": "Vga Champ 2017",
+      "description": "Badge discovered: vga-champ-2017",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987066",
+      "source": "html_extraction"
+    },
+    "devil-may-cry-hd_2": {
+      "name": "Devil May Cry Hd_2",
+      "description": "Badge discovered: devil-may-cry-hd_2",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987045",
+      "source": "html_extraction"
+    },
+    "samusoffer_beta": {
+      "name": "Samusoffer_Beta",
+      "description": "Badge discovered: samusoffer_beta",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986983",
+      "source": "html_extraction"
+    },
+    "raging-wolf-helm": {
+      "name": "Raging Wolf Helm",
+      "description": "Badge discovered: raging-wolf-helm",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986926",
+      "source": "html_extraction"
+    },
+    "league-of-legends-mid-season-invitational-2025---purple": {
+      "name": "League Of Legends Mid Season Invitational 2025   Purple",
+      "description": "Badge discovered: league-of-legends-mid-season-invitational-2025---purple",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986944",
+      "source": "html_extraction"
+    },
+    "okhlos_1": {
+      "name": "Okhlos_1",
+      "description": "Badge discovered: okhlos_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987016",
+      "source": "html_extraction"
+    },
+    "rift_1": {
+      "name": "Rift_1",
+      "description": "Badge discovered: rift_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987058",
+      "source": "html_extraction"
+    },
+    "twitchcon-referral-program-2025-bleedpurple": {
+      "name": "Twitchcon Referral Program 2025 Bleedpurple",
+      "description": "Badge discovered: twitchcon-referral-program-2025-bleedpurple",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987009",
+      "source": "html_extraction"
+    },
+    "twitchcon-2025---rotterdam": {
+      "name": "Twitchcon 2025   Rotterdam",
+      "description": "Badge discovered: twitchcon-2025---rotterdam",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986927",
+      "source": "html_extraction"
+    },
+    "la-velada-v-badge": {
+      "name": "La Velada V Badge",
+      "description": "Badge discovered: la-velada-v-badge",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987012",
+      "source": "html_extraction"
+    },
+    "starbound_1": {
+      "name": "Starbound_1",
+      "description": "Badge discovered: starbound_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986910",
+      "source": "html_extraction"
+    },
+    "battlechefbrigade_1": {
+      "name": "Battlechefbrigade_1",
+      "description": "Badge discovered: battlechefbrigade_1",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986964",
+      "source": "html_extraction"
+    },
+    "no_video": {
+      "name": "No_Video",
+      "description": "Badge discovered: no_video",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986978",
+      "source": "html_extraction"
+    },
+    "duelyst_6": {
+      "name": "Duelyst_6",
+      "description": "Badge discovered: duelyst_6",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987037",
+      "source": "html_extraction"
+    },
+    "legendus": {
+      "name": "Legendus",
+      "description": "Badge discovered: legendus",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.987002",
+      "source": "html_extraction"
+    },
+    "duelyst_4": {
+      "name": "Duelyst_4",
+      "description": "Badge discovered: duelyst_4",
+      "created_at": "",
+      "user_count": 0,
+      "last_updated": "2025-08-04T18:47:20.986930",
+      "source": "html_extraction"
+    }
+  },
+  "update_history": [
+    {
+      "timestamp": "2025-08-04T18:40:58.954244",
+      "badges_added": 0,
+      "total_badges": 0,
+      "new_badges": []
+    },
+    {
+      "timestamp": "2025-08-04T18:41:00.641618",
+      "badges_added": 0,
+      "total_badges": 0,
+      "new_badges": []
+    },
+    {
+      "timestamp": "2025-08-04T18:41:13.402724",
+      "badges_added": 0,
+      "total_badges": 0,
+      "new_badges": []
+    },
+    {
+      "timestamp": "2025-08-04T18:43:03.878617",
+      "badges_added": 0,
+      "total_badges": 0,
+      "new_badges": []
+    },
+    {
+      "timestamp": "2025-08-04T18:46:05.997432",
+      "badges_added": 0,
+      "total_badges": 0,
+      "new_badges": []
+    },
+    {
+      "timestamp": "2025-08-04T18:46:07.641048",
+      "badges_added": 0,
+      "total_badges": 0,
+      "new_badges": []
+    },
+    {
+      "timestamp": "2025-08-04T18:47:20.987641",
+      "badges_added": 0,
+      "total_badges": 0,
+      "new_badges": []
+    }
+  ]
+}

@@ -250,6 +250,12 @@
     border: 1px solid #dc3545;
 }
 
+.availability-status.expired {
+    background-color: rgba(120, 120, 120, 0.2);
+    color: #888888;
+    border: 1px solid #666666;
+}
+
 .obtain-url {
     margin-top: 15px;
 }

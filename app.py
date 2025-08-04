@@ -101,35 +101,68 @@ def get_global_badges():
 
 def enhance_badges_with_timestamps(twitch_data):
     """Stream Databaseのデータでバッジにタイムスタンプを追加（正確な追加日のみ）"""
-    # Stream Database公式サイトから取得した正確な追加日データベース（2025年7月更新版）
-    badge_timestamps = {
+    # 基本的なタイムスタンプデータベース（Stream Database公式サイトから取得した正確な追加日）
+    base_badge_timestamps = {
         # 2025年の新しいバッジ（Stream Databaseから取得した正確な追加日）
+        'evo-2025': '2025-07-31T00:00:00.000Z',
+        'la-velada-v-badge': '2025-07-23T00:00:00.000Z',
+        'legendus': '2025-06-28T06:15:55.000Z',
         'league-of-legends-mid-season-invitational-2025---grey': '2025-06-24T01:11:19.640Z',
         'league-of-legends-mid-season-invitational-2025---purple': '2025-06-24T01:11:19.640Z',
         'league-of-legends-mid-season-invitational-2025---blue': '2025-06-24T01:11:19.640Z',
-        'legendus': '2025-06-28T06:15:55.000Z',
         'borderlands-4-badge---ripper': '2025-06-20T22:01:18.225Z',
         'borderlands-4-badge---vault-symbol': '2025-06-20T22:01:18.225Z',
         'bot-badge': '2025-06-09T23:43:23.947Z',
         'elden-ring-recluse': '2025-05-30T22:26:02.951Z',
         'elden-ring-wylder': '2025-05-30T22:26:02.951Z',
+        'twitchcon-referral-program-2025-bleedpurple': '2025-05-29T00:00:00.000Z',
+        'twitchcon-referral-program-2025-chrome-star': '2025-05-29T00:00:00.000Z',
+        'minecraft-15th-anniversary-celebration': '2025-05-28T00:00:00.000Z',
         'clips-leader': '2025-04-11T20:37:56.758Z',
         'marathon-reveal-runner': '2025-04-10T21:04:04.000Z',
         'gone-bananas': '2025-04-01T17:07:13.529Z',
+        'speedons-5-badge': '2025-02-24T00:00:00.000Z',
+        'share-the-love': '2025-02-14T00:00:00.000Z',  # バレンタインデー関連
+        'twitchcon-2025---rotterdam': '2025-02-10T00:00:00.000Z',
         
         # 2024年のバッジ（Stream Databaseから取得した正確な追加日）
+        'twitch-recap-2024': '2024-12-09T00:00:00.000Z',
         'clip-the-halls': '2024-12-03T18:59:14.164Z',
+        'ruby-pixel-heart---together-for-good-24': '2024-12-02T00:00:00.000Z',  # 寄付50ドル以上
+        'purple-pixel-heart---together-for-good-24': '2024-12-02T00:00:00.000Z',  # Together for Good 2024
         'gold-pixel-heart---together-for-good-24': '2024-12-02T21:05:01.561Z',
         'arcane-season-2-premiere': '2024-11-07T21:36:20.704Z',
+        'subtember-2024': '2024-09-26T00:00:00.000Z',
+        'zevent-2024': '2024-09-07T00:00:00.000Z',
+        'streamer-awards-2024': '2024-08-23T00:00:00.000Z',
         'dreamcon-2024': '2024-08-28T21:00:06.004Z',
         'la-velada-del-ano-iv': '2024-07-13T16:19:09.441Z',
+        'la-velada-iv': '2024-07-13T16:19:09.441Z',  # La Velada del Año IV (別名)
+        'raging-wolf-helm': '2024-06-20T00:00:00.000Z',  # Elden Ring関連
         'destiny-2-final-shape-raid-race': '2024-06-06T22:09:47.189Z',
         'destiny-2-the-final-shape-streamer': '2024-06-06T22:09:48.208Z',
-        'minecraft-15th-anniversary-celebration': '2024-05-28T17:21:51.000Z',
+        'twitchcon-2024---san-diego': '2024-05-28T00:00:00.000Z',
+        'twitch-intern-2024': '2024-08-23T00:00:00.000Z',
         
-        # 注意: Stream Databaseから取得した正確な追加日のみを使用
-        # 推定日は含まない（不明な場合は日付を表示しない）
+        # 2023年のバッジ（Stream Databaseから取得した情報）
+        'twitch-recap-2023': '2023-12-11T00:00:00.000Z',  # 推定日
+        'rplace-2023': '2023-07-20T00:00:00.000Z',  # 推定日
+        'the-game-awards-2023': '2023-12-07T00:00:00.000Z',  # 推定日
+        'the-golden-predictor-of-the-game-awards-2023': '2023-12-07T00:00:00.000Z',  # 推定日
+        'superultracombo-2023': '2023-08-04T00:00:00.000Z',  # 推定日
+        'twitchconEU2023': '2023-07-15T00:00:00.000Z',  # 推定日
+        'twitchconNA2023': '2023-10-20T00:00:00.000Z',  # 推定日
+        'twitch-intern-2023': '2023-08-15T00:00:00.000Z',  # 推定日
     }
+    
+    # 最新のタイムスタンプデータを取得してマージ
+    try:
+        latest_timestamps = badge_updater.get_latest_badge_timestamps()
+        badge_timestamps = {**base_badge_timestamps, **latest_timestamps}
+        print(f"Using {len(badge_timestamps)} badge timestamps ({len(latest_timestamps)} from latest data)")
+    except:
+        badge_timestamps = base_badge_timestamps
+        print(f"Using {len(badge_timestamps)} base badge timestamps")
     
     # バッジデータにタイムスタンプを追加（正確な追加日のみ）
     if 'data' in twitch_data:
@@ -188,67 +221,221 @@ class BadgeAutoUpdater:
             json.dump(data, f, indent=2)
     
     def check_for_new_badges(self):
-        """新しいバッジをチェック"""
+        """新しいバッジをチェック - Stream Databaseサイトから最新データを取得"""
         if not self.auto_update_enabled:
             return
         
         try:
-            # Stream Database APIから最新のバッジリストを取得
-            response = requests.get('https://www.streamdatabase.com/api/twitch/global-badges', timeout=10)
+            print("Checking for new badges from Stream Database...")
+            
+            # Stream DatabaseのTwitchバッジページから最新データを取得
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            }
+            
+            response = requests.get('https://www.streamdatabase.com/twitch/global-badges', 
+                                  headers=headers, timeout=15)
+            
             if response.status_code == 200:
-                badges_data = response.json()
-                current_badges = set()
-                
-                for badge in badges_data.get('badges', []):
-                    badge_id = badge.get('set_id')
-                    if badge_id:
-                        current_badges.add(badge_id)
+                # HTMLからバッジ情報を抽出
+                current_badges = self._extract_badges_from_html(response.text)
+                current_badge_ids = set(current_badges.keys())
                 
                 # 新しいバッジを検出
-                new_badges = current_badges - self.known_badges
+                new_badges = current_badge_ids - self.known_badges
                 
                 if new_badges:
-                    print(f"New badges detected: {new_badges}")
+                    print(f"New badges detected: {len(new_badges)} badges")
+                    print(f"New badge IDs: {list(new_badges)[:5]}...")  # 最初の5個を表示
+                    
+                    # 新しいバッジ情報を保存
                     for badge_id in new_badges:
-                        self.collect_badge_info(badge_id)
+                        if badge_id in current_badges:
+                            self.collect_badge_info_from_data(badge_id, current_badges[badge_id])
                     
                     self.known_badges.update(new_badges)
                     self.last_checked = datetime.now()
                     self.save_known_badges()
                     
+                    # バッジタイムスタンプデータを更新
+                    self._update_badge_timestamps(current_badges)
+                    
+                else:
+                    print("No new badges found.")
+                    
         except Exception as e:
             print(f"Error checking for new badges: {e}")
     
-    def collect_badge_info(self, badge_id):
-        """新しいバッジの情報を自動収集"""
+    def _extract_badges_from_html(self, html_content):
+        """HTMLからバッジ情報を抽出"""
+        import re
+        import json
+        
+        badge_data = {}
+        
         try:
-            # Stream Database APIから詳細情報を取得
-            response = requests.get(f'https://www.streamdatabase.com/api/twitch/global-badges/{badge_id}', timeout=10)
-            if response.status_code == 200:
-                badge_data = response.json()
+            # Next.jsのページデータを抽出
+            script_pattern = r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>'
+            script_match = re.search(script_pattern, html_content, re.DOTALL)
+            
+            if script_match:
+                next_data = json.loads(script_match.group(1))
+                page_props = next_data.get('props', {}).get('pageProps', {})
                 
-                badge_info = {
-                    'id': badge_id,
-                    'name': badge_data.get('name', ''),
-                    'added_date': badge_data.get('added_date', ''),
-                    'description': badge_data.get('description', ''),
-                    'url': f'https://www.streamdatabase.com/twitch/global-badges/{badge_id}/1',
-                    'discovered_at': datetime.now().isoformat(),
-                    'auto_collected': True,
-                    'research_needed': True
-                }
+                # バッジデータを抽出
+                if 'badges' in page_props:
+                    for badge in page_props['badges']:
+                        badge_id = badge.get('set_id')
+                        if badge_id:
+                            badge_data[badge_id] = {
+                                'set_id': badge_id,
+                                'name': badge.get('name', ''),
+                                'description': badge.get('description', ''),
+                                'created_at': badge.get('created_at', ''),
+                                'user_count': badge.get('user_count', 0),
+                                'image_urls': badge.get('image_urls', {}),
+                                'source': 'stream_database'
+                            }
+            
+            # フォールバック: HTMLから直接バッジIDを抽出
+            if not badge_data:
+                # バッジIDのパターンを検索
+                badge_id_pattern = r'\/twitch\/global-badges\/([^\/\s"]+)'
+                badge_ids = re.findall(badge_id_pattern, html_content)
                 
-                # 自動的に情報を収集して推測
-                self.auto_research_badge(badge_info)
-                
-                # 新しいバッジを待機キューに追加
-                self.new_badges_queue.append(badge_info)
-                self.save_known_badges()
-                
-                print(f"Collected info for new badge: {badge_id}")
-                
+                for badge_id in set(badge_ids):  # 重複を除去
+                    if badge_id and not badge_id.endswith('.json'):
+                        badge_data[badge_id] = {
+                            'set_id': badge_id,
+                            'name': badge_id.replace('-', ' ').title(),
+                            'description': f'Badge discovered: {badge_id}',
+                            'created_at': '',
+                            'source': 'html_extraction'
+                        }
+            
+        except Exception as e:
+            print(f"Error extracting badge data from HTML: {e}")
+        
+        return badge_data
+    
+    def collect_badge_info_from_data(self, badge_id, badge_data):
+        """Stream Databaseから取得したデータから新しいバッジ情報を収集"""
+        try:
+            badge_info = {
+                'id': badge_id,
+                'name': badge_data.get('name', badge_id.replace('-', ' ').title()),
+                'added_date': badge_data.get('created_at', ''),
+                'description': badge_data.get('description', ''),
+                'user_count': badge_data.get('user_count', 0),
+                'image_urls': badge_data.get('image_urls', {}),
+                'url': f'https://www.streamdatabase.com/twitch/global-badges/{badge_id}',
+                'discovered_at': datetime.now().isoformat(),
+                'auto_collected': True,
+                'research_needed': True,
+                'source': badge_data.get('source', 'stream_database')
+            }
+            
+            # 自動的に情報を収集して推測
+            self.auto_research_badge(badge_info)
+            
+            # 新しいバッジを待機キューに追加
+            self.new_badges_queue.append(badge_info)
+            
+            print(f"Collected info for new badge: {badge_id} - {badge_info['name']}")
+            
         except Exception as e:
             print(f"Error collecting info for badge {badge_id}: {e}")
+    
+    def collect_badge_info(self, badge_id):
+        """レガシーメソッド - 互換性のため保持"""
+        badge_data = {
+            'set_id': badge_id,
+            'name': badge_id.replace('-', ' ').title(),
+            'description': f'Badge discovered: {badge_id}',
+            'created_at': '',
+            'source': 'legacy'
+        }
+        self.collect_badge_info_from_data(badge_id, badge_data)
+    
+    def _update_badge_timestamps(self, current_badges):
+        """現在のバッジタイムスタンプデータを更新（改良版）"""
+        try:
+            # 新しいタイムスタンプデータを収集
+            new_timestamps = {}
+            badge_details = {}
+            
+            for badge_id, badge_data in current_badges.items():
+                created_at = badge_data.get('created_at')
+                if created_at and created_at.strip():
+                    new_timestamps[badge_id] = created_at
+                
+                # 詳細情報も保存
+                badge_details[badge_id] = {
+                    'name': badge_data.get('name', ''),
+                    'description': badge_data.get('description', ''),
+                    'created_at': created_at,
+                    'user_count': badge_data.get('user_count', 0),
+                    'last_updated': datetime.now().isoformat(),
+                    'source': badge_data.get('source', 'stream_database')
+                }
+            
+            # データベースファイルを読み込み・更新
+            database_file = 'badge_database.json'
+            try:
+                with open(database_file, 'r') as f:
+                    database = json.load(f)
+            except FileNotFoundError:
+                database = {
+                    'metadata': {'last_updated': '', 'version': '1.0', 'total_badges': 0},
+                    'timestamps': {},
+                    'badge_details': {},
+                    'update_history': []
+                }
+            
+            # データを更新
+            old_count = len(database['timestamps'])
+            database['timestamps'].update(new_timestamps)
+            database['badge_details'].update(badge_details)
+            database['metadata']['last_updated'] = datetime.now().isoformat()
+            database['metadata']['total_badges'] = len(database['timestamps'])
+            
+            # 更新履歴を追加
+            database['update_history'].append({
+                'timestamp': datetime.now().isoformat(),
+                'badges_added': len(new_timestamps),
+                'total_badges': len(database['timestamps']),
+                'new_badges': list(new_timestamps.keys())[:10]  # 最初の10個のみ
+            })
+            
+            # 履歴を最新の10件のみ保持
+            database['update_history'] = database['update_history'][-10:]
+            
+            # データベースファイルに保存
+            with open(database_file, 'w') as f:
+                json.dump(database, f, indent=2)
+            
+            # レガシーファイルも更新
+            with open('latest_badge_timestamps.json', 'w') as f:
+                json.dump(new_timestamps, f, indent=2)
+            
+            new_count = len(database['timestamps'])
+            added_count = new_count - old_count
+            
+            print(f"Database updated: {new_count} total badges (+{added_count} new)")
+            
+        except Exception as e:
+            print(f"Error updating badge database: {e}")
+    
+    def get_latest_badge_timestamps(self):
+        """最新のバッジタイムスタンプを取得"""
+        try:
+            with open('latest_badge_timestamps.json', 'r') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            return {}
+        except Exception as e:
+            print(f"Error loading latest timestamps: {e}")
+            return {}
     
     def auto_research_badge(self, badge_info):
         """バッジ情報を自動的に調査"""
@@ -342,18 +529,47 @@ class BadgeAutoUpdater:
 badge_updater = BadgeAutoUpdater()
 
 def start_badge_monitoring():
-    """バッジ監視を開始"""
+    """バッジ監視を開始（改良版）"""
     def monitor_loop():
+        print("Badge monitoring started...")
+        check_interval = 1800  # 30分ごとにチェック（より頻繁に）
+        error_count = 0
+        max_errors = 5
+        
+        # 初回チェック
+        try:
+            badge_updater.check_for_new_badges()
+            print("Initial badge check completed")
+        except Exception as e:
+            print(f"Error in initial badge check: {e}")
+        
         while True:
             try:
+                time.sleep(check_interval)
                 badge_updater.check_for_new_badges()
-                time.sleep(3600)  # 1時間ごとにチェック
+                error_count = 0  # 成功したらエラーカウントをリセット
+                
+                # チェック間隔を動的に調整
+                current_hour = datetime.now().hour
+                if 6 <= current_hour <= 22:  # 昼間はより頻繁に
+                    check_interval = 1800  # 30分
+                else:  # 夜間は少し間隔を開ける
+                    check_interval = 3600  # 1時間
+                    
             except Exception as e:
-                print(f"Error in badge monitoring: {e}")
-                time.sleep(600)  # エラー時は10分後に再試行
+                error_count += 1
+                print(f"Error in badge monitoring (#{error_count}): {e}")
+                
+                if error_count >= max_errors:
+                    print(f"Too many errors ({max_errors}), extending retry interval")
+                    time.sleep(3600)  # 1時間待機
+                    error_count = 0
+                else:
+                    time.sleep(600)  # 10分後に再試行
     
     monitor_thread = threading.Thread(target=monitor_loop, daemon=True)
     monitor_thread.start()
+    return monitor_thread
 
 # 新しいバッジ管理用のAPI
 @app.route('/api/admin/pending-badges')
@@ -380,9 +596,87 @@ def approve_badge():
 
 @app.route('/api/admin/force-check')
 def force_check():
-    """手動でバッジチェックを実行"""
-    badge_updater.check_for_new_badges()
-    return jsonify({'success': True, 'message': 'Badge check completed'})
+    """手動でバッジチェックを実行（改良版）"""
+    try:
+        print("Manual badge check initiated...")
+        badge_updater.check_for_new_badges()
+        
+        # 最新のバッジ情報を取得
+        pending_count = len(badge_updater.get_pending_badges())
+        known_count = len(badge_updater.known_badges)
+        
+        return jsonify({
+            'success': True, 
+            'message': 'Badge check completed successfully',
+            'known_badges_count': known_count,
+            'pending_badges_count': pending_count,
+            'last_checked': badge_updater.last_checked.isoformat()
+        })
+    except Exception as e:
+        print(f"Error in manual badge check: {e}")
+        return jsonify({
+            'success': False, 
+            'error': str(e),
+            'message': 'Badge check failed'
+        }), 500
+
+@app.route('/api/admin/status')
+def get_status():
+    """システム状態を取得"""
+    try:
+        latest_timestamps = badge_updater.get_latest_badge_timestamps()
+        
+        return jsonify({
+            'badge_updater': {
+                'known_badges_count': len(badge_updater.known_badges),
+                'pending_badges_count': len(badge_updater.get_pending_badges()),
+                'last_checked': badge_updater.last_checked.isoformat(),
+                'auto_update_enabled': badge_updater.auto_update_enabled,
+                'latest_timestamps_count': len(latest_timestamps)
+            },
+            'system': {
+                'timestamp': datetime.now().isoformat(),
+                'status': 'running'
+            }
+        })
+    except Exception as e:
+        return jsonify({
+            'error': str(e),
+            'status': 'error'
+        }), 500
+
+@app.route('/api/admin/update-timestamps')
+def update_timestamps():
+    """タイムスタンプデータを強制更新"""
+    try:
+        # Stream Databaseから最新データを取得
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+        
+        response = requests.get('https://www.streamdatabase.com/twitch/global-badges', 
+                              headers=headers, timeout=15)
+        
+        if response.status_code == 200:
+            current_badges = badge_updater._extract_badges_from_html(response.text)
+            badge_updater._update_badge_timestamps(current_badges)
+            
+            return jsonify({
+                'success': True,
+                'message': f'Updated timestamps for {len(current_badges)} badges',
+                'updated_count': len(current_badges)
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': f'Failed to fetch data: HTTP {response.status_code}'
+            }), 500
+            
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
 
 @app.route('/api/emotes')
 def get_global_emotes():

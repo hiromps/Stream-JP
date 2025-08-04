@@ -130,6 +130,60 @@ const badgeAvailabilityPeriods = {
         start: '2024-06-07T00:00:00Z',
         end: '2024-06-09T23:59:59Z',
         description: 'Destiny 2 raid race June 7-9, 2024'
+    },
+    'evo-2025': {
+        type: 'time-limited',
+        start: '2025-08-01T00:00:00Z',
+        end: '2025-08-04T23:59:59Z',
+        description: 'Evo 2025 fighting game tournament August 1-4, 2025'
+    },
+    'share-the-love': {
+        type: 'time-limited',
+        start: '2025-02-14T00:00:00Z',
+        end: '2025-02-14T23:59:59Z',
+        description: 'Share the Love Valentine\'s Day 2025'
+    },
+    'raging-wolf-helm': {
+        type: 'time-limited',
+        start: '2024-06-20T00:00:00Z',
+        end: '2024-06-22T23:59:59Z',
+        description: 'Elden Ring collaboration event June 2024'
+    },
+    'speedons-5-badge': {
+        type: 'time-limited',
+        start: '2025-02-24T00:00:00Z',
+        end: '2025-02-24T23:59:59Z',
+        description: 'Speedons 5 event February 24, 2025'
+    },
+    'ruby-pixel-heart---together-for-good-24': {
+        type: 'time-limited',
+        start: '2024-12-02T00:00:00Z',
+        end: '2024-12-15T23:59:59Z',
+        description: 'Together for Good 2024 December 2-15, 2024'
+    },
+    'purple-pixel-heart---together-for-good-24': {
+        type: 'time-limited',
+        start: '2024-12-02T00:00:00Z',
+        end: '2024-12-15T23:59:59Z', 
+        description: 'Together for Good 2024 December 2-15, 2024'
+    },
+    'la-velada-iv': {
+        type: 'time-limited',
+        start: '2024-07-13T00:00:00Z',
+        end: '2024-07-14T23:59:59Z',
+        description: 'La Velada del Año IV July 13, 2024'
+    },
+    'la-velada-v-badge': {
+        type: 'time-limited',
+        start: '2025-07-26T16:45:00Z',
+        end: '2025-07-27T01:30:00Z',
+        description: 'La Velada del Año V July 26, 2025'
+    },
+    'zevent-2024': {
+        type: 'time-limited',
+        start: '2024-09-06T18:00:00Z',
+        end: '2024-09-08T23:59:59Z',
+        description: 'ZEVENT 2024 charity marathon September 6-8, 2024'
     }
 };
 
