@@ -793,6 +793,42 @@ header h1 {
     animation: dataStream 3s linear infinite;
 }
 
+/* Expired Badge Styling */
+.availability-expired {
+    background-color: #eb0400;
+    color: #efeff1;
+}
+
+.availability-future {
+    background-color: #8b5cf6;
+    color: #efeff1;
+}
+
+.availability-upcoming {
+    background-color: #1f69ff;
+    color: #efeff1;
+}
+
+.availability-unknown {
+    background-color: #53535f;
+    color: #efeff1;
+}
+
+/* 入手不可能なバッジの視覚的表現 */
+.badge-card:has(.availability-expired) {
+    opacity: 0.6;
+    filter: grayscale(30%);
+}
+
+.badge-card:has(.availability-expired) .badge-image-large {
+    filter: grayscale(50%);
+}
+
+.badge-card:has(.availability-future) {
+    opacity: 0.8;
+    border: 2px dashed #8b5cf6;
+}
+
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
     *,
