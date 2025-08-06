@@ -1,3 +1,18 @@
+// ベースURLを動的に取得
+function getBaseUrl() {
+    // Vercelでは全てのAPIエンドポイントが同じオリジンで提供される
+    // 開発環境と本番環境を自動判別
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        // 開発環境: Flask開発サーバー
+        return 'http://localhost:5000';
+    } else {
+        // 本番環境（Vercel）: APIは同じオリジンの/api/パスで提供される
+        return '';
+    }
+}
+
+const BASE_URL = getBaseUrl();
+
 // 強化されたストリーム配信ダッシュボード JavaScript
 class StreamDashboard {
     constructor() {
@@ -300,7 +315,7 @@ class StreamDashboard {
 
     async loadBadges() {
         try {
-            const response = await fetch('/api/badges');
+            const response = await fetch(`${BASE_URL}/api/badges`);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             
             const data = await response.json();
@@ -319,7 +334,7 @@ class StreamDashboard {
 
     async loadEmotes() {
         try {
-            const response = await fetch('/api/emotes');
+            const response = await fetch(`${BASE_URL}/api/emotes`);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             
             const data = await response.json();
@@ -463,9 +478,10 @@ class StreamDashboard {
             availabilityInfo = `<div class="availability-status ${statusClass}">${this.escapeHtml(availability.message)}</div>`;
         }
         
-        // 追加日の表示
+        // 追加日の表示（APIからの正確な日付を優先し、なければ推定日を表示）
         let addedDateInfo = '';
         if (badge.created_at && badge.has_real_timestamp) {
+            // 正確な追加日
             const addedDate = new Date(badge.created_at);
             const formattedDate = addedDate.toLocaleDateString('ja-JP', {
                 year: 'numeric',
@@ -473,6 +489,15 @@ class StreamDashboard {
                 day: 'numeric'
             });
             addedDateInfo = `<div class="badge-added-date">追加日: ${formattedDate}</div>`;
+        } else if (badge.created_at) {
+            // 推定追加日
+            const addedDate = new Date(badge.created_at);
+            const formattedDate = addedDate.toLocaleDateString('ja-JP', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            addedDateInfo = `<div class="badge-added-date">追加日: ${formattedDate} (推定)</div>`;
         } else {
             addedDateInfo = '<div class="badge-added-date">追加日: 不明</div>';
         }
