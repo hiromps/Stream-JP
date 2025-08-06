@@ -16,10 +16,8 @@ const BASE_URL = getBaseUrl();
 // バッジの入手可能期間データベース（badge-detail.jsと同じ）
 const badgeAvailabilityPeriods = {
     'clips-leader': {
-        type: 'time-limited',
-        start: '2025-04-11T00:00:00Z',
-        end: '2025-04-11T23:59:59Z',
-        description: 'Clips Leader discontinued April 11, 2025'
+        type: 'ongoing',
+        description: 'Ongoing feature since April 11, 2025'
     },
     'legendus': {
         type: 'time-limited',

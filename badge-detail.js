@@ -16,10 +16,8 @@ const BASE_URL = getBaseUrl();
 // バッジの入手可能期間データベース
 const badgeAvailabilityPeriods = {
     'clips-leader': {
-        type: 'time-limited',
-        start: '2025-04-11T00:00:00Z',
-        end: '2025-04-11T23:59:59Z',
-        description: 'Clips Leader discontinued April 11, 2025'
+        type: 'ongoing',
+        description: 'Ongoing feature since April 11, 2025'
     },
     'legendus': {
         type: 'time-limited',
@@ -336,6 +334,33 @@ let currentVersionId = null;
 
 // バッジ入手方法データベース
 const badgeObtainMethods = {
+    // 継続中のバッジ
+    'clips-leader': {
+        ja: {
+            title: 'Clips Leader バッジ',
+            description: 'チャンネルでクリップを作成したり、作成されたクリップが人気になることで入手できます。現在入手可能です。',
+            requirements: [
+                'チャンネルでクリップを作成する',
+                'または他の人があなたのチャンネルでクリップを作成する',
+                'クリップが一定の視聴数を獲得する',
+                'アクティブなTwitchアカウントが必要'
+            ],
+            availability: 'available',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/clips-leader/1'
+        },
+        en: {
+            title: 'Clips Leader Badge',
+            description: 'Obtained by creating clips on channels or having clips created on your channel that become popular. Currently available.',
+            requirements: [
+                'Create clips on channels',
+                'Or have others create clips on your channel',
+                'Clips must achieve certain viewership',
+                'Active Twitch account required'
+            ],
+            availability: 'available',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/clips-leader/1'
+        }
+    },
     // 2025年のバッジ
     'legendus': {
         ja: {
