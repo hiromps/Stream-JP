@@ -713,6 +713,21 @@ def enhance_emotes_with_timestamps(twitch_data):
     # Stream Database（2025年7月更新）からの正確な追加日データベース
     emote_timestamps = {
         # 2025年に追加されたエモート（Stream Databaseから取得）
+        'bosscleared': '2025-08-01T00:00:00.000Z',
+        'veladapeereira': '2025-07-24T00:00:00.000Z',
+        'veladaperxitaa': '2025-07-24T00:00:00.000Z',
+        'veladaroro': '2025-07-24T00:00:00.000Z',
+        'veladatomas': '2025-07-24T00:00:00.000Z',
+        'veladaviruzz': '2025-07-24T00:00:00.000Z',
+        'veladawestcol': '2025-07-24T00:00:00.000Z',
+        'veladarivaldios': '2025-07-24T00:00:00.000Z',
+        'veladagrefg': '2025-07-24T00:00:00.000Z',
+        'veladagaspi': '2025-07-24T00:00:00.000Z',
+        'veladacarlos': '2025-07-24T00:00:00.000Z',
+        'veladaandoni': '2025-07-24T00:00:00.000Z',
+        'veladaarigeli': '2025-07-24T00:00:00.000Z',
+        'veladaabby': '2025-07-24T00:00:00.000Z',
+        'veladaalana': '2025-07-24T00:00:00.000Z',
         'velocityrun': '2025-07-07T00:00:00.000Z',
         'mechacharge': '2025-07-02T00:00:00.000Z',
         'ewccrush': '2025-06-16T00:00:00.000Z',

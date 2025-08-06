@@ -351,10 +351,16 @@ class StreamDashboard {
             return;
         }
 
-        // 更新日でソート（最新順）
+        // 作成日でソート（最新順）- 正確な作成日を優先し、推定日も考慮
         const sortedBadges = [...this.badges].sort((a, b) => {
-            const dateA = new Date(a.created_at || a.updated_at || 0);
-            const dateB = new Date(b.created_at || b.updated_at || 0);
+            // 正確な作成日がある場合は優先
+            const dateA = (a.created_at && a.has_real_timestamp) 
+                ? new Date(a.created_at) 
+                : new Date(a.created_at || a.updated_at || '2020-01-01');
+            const dateB = (b.created_at && b.has_real_timestamp) 
+                ? new Date(b.created_at) 
+                : new Date(b.created_at || b.updated_at || '2020-01-01');
+            
             return dateB - dateA;
         });
 
@@ -398,10 +404,16 @@ class StreamDashboard {
             return;
         }
 
-        // 更新日でソート（最新順）
+        // 作成日でソート（最新順）- 正確な作成日を優先し、推定日も考慮
         const sortedEmotes = [...this.emotes].sort((a, b) => {
-            const dateA = new Date(a.created_at || a.updated_at || 0);
-            const dateB = new Date(b.created_at || b.updated_at || 0);
+            // 正確な作成日がある場合は優先
+            const dateA = (a.created_at && a.has_real_timestamp) 
+                ? new Date(a.created_at) 
+                : new Date(a.created_at || a.updated_at || '2020-01-01');
+            const dateB = (b.created_at && b.has_real_timestamp) 
+                ? new Date(b.created_at) 
+                : new Date(b.created_at || b.updated_at || '2020-01-01');
+            
             return dateB - dateA;
         });
 

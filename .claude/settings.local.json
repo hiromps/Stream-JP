@@ -13,7 +13,8 @@
       "Bash(mkdir:*)",
       "Bash(rg:*)",
       "Bash(powershell:*)",
-      "WebFetch(domain:evo.gg)"
+      "WebFetch(domain:evo.gg)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }

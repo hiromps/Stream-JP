@@ -346,13 +346,17 @@ async function loadGlobalBadges() {
             // バッジIDから番号を抽出（例：60-seconds_1 → 1）
             const badgeNumber = extractBadgeNumber(badge.set_id);
             
-            // APIから取得した実際の作成日のみを使用（推定日は使用しない）
+            // 作成日の設定：APIからの正確な日付を優先し、なければ推定日を使用
             let createdDate = null;
             let hasRealTimestamp = false;
             
             if (badge.created_at && badge.has_real_timestamp) {
+                // APIからの正確な作成日
                 createdDate = new Date(badge.created_at);
                 hasRealTimestamp = true;
+            } else {
+                // 推定作成日を生成
+                createdDate = generateCreatedDate(badge.set_id, index);
             }
             
             return {
@@ -871,35 +875,33 @@ function sortBadges(sortOrder) {
     
     switch (sortOrder) {
         case 'newest':
-            // 新しい順：正確な追加日のあるバッジを優先し、その後createdDateの新しい順
+            // 新しい順：すべてのバッジを追加日順で並べる（推定日も含む）
             sortedBadges.sort((a, b) => {
-                // 正確な追加日があるバッジを優先
-                if (a.hasRealTimestamp && !b.hasRealTimestamp) return -1;
-                if (!a.hasRealTimestamp && b.hasRealTimestamp) return 1;
-                
-                // 両方に正確な追加日がある場合は日付で比較
-                if (a.hasRealTimestamp && b.hasRealTimestamp) {
+                // 両方とも正確な追加日がある場合
+                if (a.createdDate && b.createdDate) {
                     return b.createdDate - a.createdDate;
                 }
+                // 片方だけ正確な追加日がある場合、そちらを優先
+                if (a.createdDate && !b.createdDate) return -1;
+                if (!a.createdDate && b.createdDate) return 1;
                 
-                // 両方とも追加日不明の場合は元の順序を維持
+                // 両方とも追加日不明の場合は、元のAPI順序を維持（新しいものが先）
                 return a.originalIndex - b.originalIndex;
             });
             break;
         case 'oldest':
-            // 古い順：正確な追加日のあるバッジを優先し、その後createdDateの古い順
+            // 古い順：すべてのバッジを追加日順で並べる（推定日も含む）
             sortedBadges.sort((a, b) => {
-                // 正確な追加日があるバッジを優先
-                if (a.hasRealTimestamp && !b.hasRealTimestamp) return -1;
-                if (!a.hasRealTimestamp && b.hasRealTimestamp) return 1;
-                
-                // 両方に正確な追加日がある場合は日付で比較
-                if (a.hasRealTimestamp && b.hasRealTimestamp) {
+                // 両方とも正確な追加日がある場合
+                if (a.createdDate && b.createdDate) {
                     return a.createdDate - b.createdDate;
                 }
+                // 片方だけ正確な追加日がある場合、そちらを優先
+                if (a.createdDate && !b.createdDate) return -1;
+                if (!a.createdDate && b.createdDate) return 1;
                 
-                // 両方とも追加日不明の場合は元の順序を維持
-                return a.originalIndex - b.originalIndex;
+                // 両方とも追加日不明の場合は、元のAPI順序を逆順で維持（古いものが先）
+                return b.originalIndex - a.originalIndex;
             });
             break;
     }
