@@ -97,6 +97,7 @@ header h1 {
     gap: 1.5rem;
     padding: 1.5rem;
     overflow: hidden;
+    height: calc(100vh - 80px);
 }
 
 .dashboard-block {
@@ -109,8 +110,7 @@ header h1 {
     flex-direction: column;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
-    min-height: 400px;
-    max-height: 600px;
+    height: 100%;
 }
 
 .dashboard-block::before {
@@ -628,8 +628,7 @@ header h1 {
     }
     
     .dashboard-block {
-        min-height: 350px;
-        max-height: 500px;
+        height: 100%;
     }
     
     .emotes-block {

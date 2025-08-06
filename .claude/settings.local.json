@@ -11,7 +11,9 @@
       "Bash(git add:*)",
       "WebFetch(domain:www.streamdatabase.com)",
       "Bash(mkdir:*)",
-      "Bash(rg:*)"
+      "Bash(rg:*)",
+      "Bash(powershell:*)",
+      "WebFetch(domain:evo.gg)"
     ],
     "deny": []
   }

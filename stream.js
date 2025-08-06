@@ -12,8 +12,10 @@ class StreamDashboard {
     initBadgeAvailabilityData() {
         this.badgeAvailabilityPeriods = {
             'clips-leader': {
-                type: 'ongoing',
-                description: 'Ongoing feature since April 11, 2025'
+                type: 'time-limited',
+                start: '2025-04-11T00:00:00Z',
+                end: '2025-04-11T23:59:59Z',
+                description: 'Clips Leader feature April 11, 2025'
             },
             'legendus': {
                 type: 'time-limited',
@@ -555,38 +557,14 @@ class StreamDashboard {
     }
 
     getBadgeObtainMethod(badgeId, availability) {
-        // 動的な期間情報を生成
-        const getDynamicPeriodText = (availability) => {
-            if (!availability || !availability.startDate || !availability.endDate) {
-                return 'イベント期間中';
-            }
-            
-            const startDate = new Date(availability.startDate);
-            const endDate = new Date(availability.endDate);
-            
-            // 日本語の日付フォーマット
-            const formatDate = (date) => {
-                const year = date.getFullYear();
-                const month = date.getMonth() + 1;
-                const day = date.getDate();
-                return `${year}年${month}月${day}日`;
-            };
-            
-            // 開始日と終了日が同じ場合
-            if (startDate.toDateString() === endDate.toDateString()) {
-                return `${formatDate(startDate)}のイベント期間中`;
-            }
-            
-            // 異なる場合
-            return `${formatDate(startDate)} - ${formatDate(endDate)}の期間内`;
-        };
-        
-        // バッジIDに基づいて詳細な入手方法を返す（動的期間対応）
+        // badge-detail.jsと同じ詳細な入手方法データベース
         const badgeObtainMethods = {
             'legendus': {
                 ja: {
+                    title: 'LEGENDUS ITADAKI イベント参加',
+                    description: 'LEGENDUS ITADAKI イベント期間中（2025年6月28-29日）にfps_shakaまたはlegendus_shakaの配信を30分間視聴することで入手できました。',
                     requirements: [
-                        `${getDynamicPeriodText(availability)}に参加`,
+                        '2025年6月28-29日のイベント期間中に参加',
                         'fps_shakaまたはlegendus_shakaの配信を視聴',
                         '最低30分間の継続視聴が必要',
                         'Twitchアカウントでログイン済み'
@@ -595,8 +573,10 @@ class StreamDashboard {
             },
             'marathon-reveal-runner': {
                 ja: {
+                    title: 'Marathon Reveal ストリーム購読',
+                    description: 'Bungie の Marathon Reveal ストリーム期間中（2025年4月11-12日）に Marathonディレクトリ内のクリエイターに購読することで入手できました。',
                     requirements: [
-                        `${getDynamicPeriodText(availability)}`,
+                        '2025年4月11日7:45 AM PT - 4月12日4:00 PM PTの期間内',
                         'Marathonディレクトリ内のチャンネルに新規購読',
                         'ギフト購読でも獲得可能',
                         'Prime購読は対象外'
@@ -605,38 +585,47 @@ class StreamDashboard {
             },
             'gone-bananas': {
                 ja: {
+                    title: 'Gone Bananas エイプリルフール 2025',
+                    description: 'エイプリルフール週間（2025年4月1-4日）に面白いクリップをソーシャルメディアでシェアすることで入手できました。',
                     requirements: [
-                        `${getDynamicPeriodText(availability)}のApril Foolsイベント`,
-                        'April Foolsイベント参加配信を視聴',
-                        '特別なイベントアクティビティに参加',
-                        'イベント期間中にログインが必要'
+                        '2025年4月1-4日の期間内',
+                        'エイプリルフール特別カテゴリからクリップを作成/シェア',
+                        'TikTok、YouTube、Instagramのいずれかでシェア',
+                        '通常のクリップは対象外',
+                        'Twitchアカウントでログイン済み'
                     ]
                 }
             },
             'elden-ring-wylder': {
                 ja: {
+                    title: 'Elden Ring Nightreign クリップ共有',
+                    description: 'Elden Ring: Nightreign イベント期間中（2025年5月29日 - 6月3日）にElden Ringのクリップをダウンロード・共有することで入手できました。',
                     requirements: [
-                        `${getDynamicPeriodText(availability)}`,
-                        'Elden Ring Nightreignのクリップを作成または共有',
-                        'FromSoftwareの公式イベントに参加',
-                        'Elden Ringカテゴリの配信でアクティブ'
+                        '2025年5月29日 - 6月3日の期間内',
+                        'Elden Ring: Nightreignカテゴリのクリップを作成・ダウンロード',
+                        'YouTube、TikTok、Instagramのいずれかでクリップを共有',
+                        'バッジ付与まで最大72時間要する場合あり'
                     ]
                 }
             },
             'elden-ring-recluse': {
                 ja: {
+                    title: 'Elden Ring SuperFan Recluse',
+                    description: 'Elden Ring: Nightreign の協力配信イベント（2025年5月29日午前12時 - 5月30日正午PT）でStream Togetherを使用した配信を15分間視聴/配信することで入手できました。',
                     requirements: [
-                        `${getDynamicPeriodText(availability)}`,
-                        'Elden Ring SuperFanイベントに参加',
-                        'FromSoftwareの公式配信を視聴',
-                        'イベント期間中にElden Ring配信でアクティブ'
+                        '2025年5月29日午前12時PT - 5月30日正午PTの期間内',
+                        'Stream Together機能を使用したElden Ring配信を15分間視聴',
+                        'または自分でStream Togetherを使ってElden Ring配信を15分間実施',
+                        'Elden Ring: Nightreignカテゴリが対象'
                     ]
                 }
             },
             'league-of-legends-mid-season-invitational-2025---grey': {
                 ja: {
+                    title: 'LoL MSI 2025 ストリーマーサポートバッジ',
+                    description: 'MSI 2025期間中（2024年6月24日 - 7月12日）にLeague of Legendsカテゴリのストリーマーに購読することで入手できました。',
                     requirements: [
-                        `${getDynamicPeriodText(availability)}`,
+                        '2024年6月24日 - 7月12日8:59 AM (GMT+2)の期間内',
                         'League of Legendsカテゴリのストリーマーに購読',
                         'ギフト購読でも獲得可能',
                         'Prime購読は対象外',
@@ -646,9 +635,12 @@ class StreamDashboard {
             },
             'league-of-legends-mid-season-invitational-2025---purple': {
                 ja: {
+                    title: 'LoL MSI 2025 eスポーツバッジ',
+                    description: 'MSI 2025期間中（2024年6月24日 - 7月12日）にLoL eスポーツチャンネルに購読することで入手できました。',
                     requirements: [
-                        `${getDynamicPeriodText(availability)}`,
-                        'Riot Gamesチャンネルに購読またはギフト購読',
+                        '2024年6月24日 - 7月12日8:59 AM (GMT+2)の期間内',
+                        'Riot Gamesまたは公式LoL eスポーツチャンネルに購読',
+                        'LCK、lolesportstw、LeagueofLegendsJPなどが対象',
                         'Prime購読は対象外',
                         'TwitchとRiotアカウントの連携が必要'
                     ]
@@ -656,18 +648,21 @@ class StreamDashboard {
             },
             'league-of-legends-mid-season-invitational-2025---blue': {
                 ja: {
+                    title: 'LoL MSI 2025 ブルーバッジ',
+                    description: 'MSI 2025期間中（2024年6月24日 - 7月12日）に特定の条件を満たすことで入手できました。詳細な入手方法についてはイベント固有の要件があります。',
                     requirements: [
-                        `${getDynamicPeriodText(availability)}`,
-                        'Riot Gamesチャンネルに購読またはギフト購読',
-                        'Prime購読は対象外',
+                        '2024年6月24日 - 7月12日8:59 AM (GMT+2)の期間内',
+                        'MSI 2025イベント特定の条件を満たす',
                         'TwitchとRiotアカウントの連携が必要'
                     ]
                 }
             },
             'borderlands-4-badge---ripper': {
                 ja: {
+                    title: 'Borderlands 4 Ripper バッジ',
+                    description: 'Borderlands 4 Fan Fest期間中（2025年6月21日）にBorderlands 4関連の配信を視聴することで入手できました。',
                     requirements: [
-                        `${getDynamicPeriodText(availability)}のBorderlands 4 Fan Fest`,
+                        '2025年6月21日のBorderlands 4 Fan Fest期間内',
                         'Borderlands 4関連の配信を視聴',
                         'Gearbox公式イベントに参加',
                         'Borderlands 4カテゴリでアクティブ'
@@ -676,11 +671,25 @@ class StreamDashboard {
             },
             'borderlands-4-badge---vault-symbol': {
                 ja: {
+                    title: 'Borderlands 4 Vault Symbol バッジ',
+                    description: 'Borderlands 4 Fan Fest期間中（2025年6月21日）にBorderlands 4関連の配信を視聴することで入手できました。',
                     requirements: [
-                        `${getDynamicPeriodText(availability)}のBorderlands 4 Fan Fest`,
+                        '2025年6月21日のBorderlands 4 Fan Fest期間内',
                         'Borderlands 4関連の配信を視聴',
                         'Gearbox公式イベントに参加',
                         'Borderlands 4カテゴリでアクティブ'
+                    ]
+                }
+            },
+            'evo-2025': {
+                ja: {
+                    title: 'Evo 2025 バッジ',
+                    description: 'Evo 2025格闘ゲーム大会期間中（2025年8月1-4日）に指定チャンネルに購読することで入手できます。',
+                    requirements: [
+                        '2025年8月1-4日のEvo 2025期間内',
+                        'EvoまたはCapcomFighters等の指定チャンネルに購読',
+                        'ギフト購読でも獲得可能',
+                        'Prime購読は対象外'
                     ]
                 }
             }
@@ -697,21 +706,22 @@ class StreamDashboard {
     }
 
     getBadgeDetailsInJapanese(badgeId, availability) {
-        // バッジの詳細情報を日本語で生成
-        const details = {
-            'legendus': 'LEGENDUS ITADAKI イベントでfps_shakaまたはlegendus_shakaの配信を30分間視聴することで入手可能でした。期間限定で現在は入手できません。',
-            'marathon-reveal-runner': 'Bungie の Marathon Reveal イベント期間中に Marathon カテゴリのクリエイターに新規購読することで入手可能でした。Prime購読は対象外で、現在は入手できません。',
-            'gone-bananas': 'April Fools 2025 イベント期間中に特別なイベント配信を視聴することで入手可能でした。現在は入手できません。',
-            'elden-ring-wylder': 'Elden Ring Nightreign の発表イベント期間中にクリップを作成・共有することで入手可能でした。現在は入手できません。',
-            'elden-ring-recluse': 'Elden Ring SuperFan イベント期間中にFromSoftware公式配信を視聴することで入手可能でした。現在は入手できません。',
-            'league-of-legends-mid-season-invitational-2025---grey': 'MSI 2025 期間中に League of Legends カテゴリのストリーマーに購読することで入手可能です。ギフト購読でも獲得可能で、Prime購読は対象外で、TwitchとRiotアカウントの連携が必要です。',
-            'league-of-legends-mid-season-invitational-2025---purple': 'MSI 2025 期間中に Riot Games チャンネルに購読またはギフト購読することで入手可能です。Prime購読は対象外で、TwitchとRiotアカウントの連携が必要です。',
-            'league-of-legends-mid-season-invitational-2025---blue': 'MSI 2025 期間中に Riot Games チャンネルに購読またはギフト購読することで入手可能です。Prime購読は対象外で、TwitchとRiotアカウントの連携が必要です。',
-            'borderlands-4-badge---ripper': 'Borderlands 4 Fan Fest イベントでBorderlands 4 関連の配信を視聴することで入手可能でした。現在は入手できません。',
-            'borderlands-4-badge---vault-symbol': 'Borderlands 4 Fan Fest イベントでBorderlands 4 関連の配信を視聴することで入手可能でした。現在は入手できません。'
+        // badge-detail.jsと同じ詳細情報データベース
+        const badgeDetailDescriptions = {
+            'legendus': 'LEGENDUS ITADAKI イベント期間中（2025年6月28-29日）にfps_shakaまたはlegendus_shakaの配信を30分間視聴することで入手できました。',
+            'marathon-reveal-runner': 'Bungie の Marathon Reveal ストリーム期間中（2025年4月11-12日）に Marathonディレクトリ内のクリエイターに購読することで入手できました。',
+            'gone-bananas': 'エイプリルフール週間（2025年4月1-4日）に面白いクリップをソーシャルメディアでシェアすることで入手できました。',
+            'elden-ring-wylder': 'Elden Ring: Nightreign イベント期間中（2025年5月29日 - 6月3日）にElden Ringのクリップをダウンロード・共有することで入手できました。',
+            'elden-ring-recluse': 'Elden Ring: Nightreign の協力配信イベント（2025年5月29日午前12時 - 5月30日正午PT）でStream Togetherを使用した配信を15分間視聴/配信することで入手できました。',
+            'league-of-legends-mid-season-invitational-2025---grey': 'MSI 2025期間中（2024年6月24日 - 7月12日）にLeague of Legendsカテゴリのストリーマーに購読することで入手できました。',
+            'league-of-legends-mid-season-invitational-2025---purple': 'MSI 2025期間中（2024年6月24日 - 7月12日）にLoL eスポーツチャンネルに購読することで入手できました。',
+            'league-of-legends-mid-season-invitational-2025---blue': 'MSI 2025期間中（2024年6月24日 - 7月12日）に特定の条件を満たすことで入手できました。詳細な入手方法についてはイベント固有の要件があります。',
+            'borderlands-4-badge---ripper': 'Borderlands 4 Fan Fest期間中（2025年6月21日）にBorderlands 4関連の配信を視聴することで入手できました。',
+            'borderlands-4-badge---vault-symbol': 'Borderlands 4 Fan Fest期間中（2025年6月21日）にBorderlands 4関連の配信を視聴することで入手できました。',
+            'evo-2025': 'Evo 2025格闘ゲーム大会期間中（2025年8月1-4日）に指定チャンネルに購読することで入手できます。'
         };
 
-        let detail = details[badgeId] || 'このバッジの詳細情報は公式サイトをご確認ください。';
+        let detail = badgeDetailDescriptions[badgeId] || 'このバッジの詳細情報は公式サイトをご確認ください。';
         
         // 期間限定バッジの場合、残り時間を追加
         if (availability && availability.status === 'limited' && availability.endDate) {
@@ -826,7 +836,6 @@ class StreamDashboard {
     createEmptyState(message) {
         return `
             <div class="loading-state">
-                <div class="cyber-loader"></div>
                 <p>${message}</p>
             </div>
         `;
