@@ -99,6 +99,8 @@ def enhance_badges_with_timestamps(twitch_data):
         'league-of-legends-mid-season-invitational-2025---purple': '2025-06-24T01:11:19.640Z',
         'league-of-legends-mid-season-invitational-2025---blue': '2025-06-24T01:11:19.640Z',
         'legendus': '2025-06-28T06:15:55.000Z',
+        'la-velada-v-badge': '2025-07-23T00:00:00.000Z',
+        'evo-2025': '2025-07-31T00:00:00.000Z',
         'borderlands-4-badge---ripper': '2025-06-20T22:01:18.225Z',
         'borderlands-4-badge---vault-symbol': '2025-06-20T22:01:18.225Z',
         'bot-badge': '2025-06-09T23:43:23.947Z',
