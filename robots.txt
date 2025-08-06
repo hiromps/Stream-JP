@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://stream-jp.vercel.app/sitemap.xml
+
+# Block access to admin files if any
+Disallow: /admin/
+Disallow: /.env*
+Disallow: /api/admin/
+
+# Allow important pages
+Allow: /
+Allow: /stream
+Allow: /emotes.html
+Allow: /badge-detail.html
+
+# Block unnecessary files
+Disallow: /*.json$
+Disallow: /package*.json
+Disallow: /.*
