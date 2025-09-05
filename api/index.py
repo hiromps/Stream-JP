@@ -251,5 +251,92 @@ def enhance_emotes_with_timestamps(twitch_data):
     
     return twitch_data
 
+@app.route('/api/update-badges', methods=['POST'])
+def update_badges():
+    """Stream Databaseから最新バッジ情報をチェック"""
+    import re
+    import json
+    from datetime import datetime
+    
+    try:
+        # 既知のバッジリスト（現在コードに含まれているもの）
+        known_badges = {
+            'zevent25', 'hornet', 'subtember-2025', 
+            'gears-of-war-superfan-badge', 'path-of-exile-2-badge',
+            'zevent-2024', 'la-velada-v-badge', 'evo-2025',
+            'share-the-love', 'speedons-5-badge', 'clips-leader',
+            'legendus', 'marathon-reveal-runner', 'gone-bananas',
+            'elden-ring-wylder', 'elden-ring-recluse',
+            'league-of-legends-mid-season-invitational-2025---grey',
+            'league-of-legends-mid-season-invitational-2025---purple',
+            'league-of-legends-mid-season-invitational-2025---blue',
+            'borderlands-4-badge---ripper', 'borderlands-4-badge---vault-symbol',
+            'bot-badge', 'minecraft-15th-anniversary-celebration',
+            'clip-the-halls', 'gold-pixel-heart---together-for-good-24',
+            'gold-pixel-heart', 'arcane-season-2-premiere', 'dreamcon-2024',
+            'destiny-2-the-final-shape-streamer', 'destiny-2-final-shape-raid-race',
+            'raging-wolf-helm', 'ruby-pixel-heart---together-for-good-24',
+            'purple-pixel-heart---together-for-good-24', 'la-velada-iv'
+        }
+        
+        # Stream Databaseからデータを取得
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+        
+        response = requests.get(
+            'https://www.streamdatabase.com/twitch/global-badges',
+            headers=headers,
+            timeout=15
+        )
+        
+        if response.status_code != 200:
+            return jsonify({
+                'success': False,
+                'error': f'Stream Database API error: {response.status_code}'
+            }), 500
+        
+        html_content = response.text
+        current_badges = set()
+        
+        # HTMLからバッジIDを抽出
+        badge_id_pattern = r'\/twitch\/global-badges\/([^\/\s"]+)\/1'
+        badge_ids = re.findall(badge_id_pattern, html_content)
+        
+        for badge_id in badge_ids:
+            if badge_id and not badge_id.endswith('.json') and not badge_id.startswith('_'):
+                current_badges.add(badge_id)
+        
+        # 新しいバッジを検出
+        new_badges = current_badges - known_badges
+        
+        result = {
+            'success': True,
+            'timestamp': datetime.now().isoformat(),
+            'total_badges_found': len(current_badges),
+            'known_badges_count': len(known_badges),
+            'new_badges_count': len(new_badges),
+            'new_badges': list(new_badges)[:10]  # 最大10個まで返す
+        }
+        
+        if new_badges:
+            result['message'] = f'{len(new_badges)}個の新しいバッジが見つかりました'
+        else:
+            result['message'] = '新しいバッジは見つかりませんでした'
+        
+        return jsonify(result)
+        
+    except requests.exceptions.RequestException as e:
+        return jsonify({
+            'success': False,
+            'error': f'Network error: {str(e)}'
+        }), 500
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'Server error: {str(e)}'
+        }), 500
+
 # VercelはFlaskアプリケーションを直接エクスポート
 app = app

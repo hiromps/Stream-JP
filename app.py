@@ -835,6 +835,35 @@ def stream():
     """ストリームページ"""
     return send_from_directory('.', 'stream.html')
 
+@app.route('/api/update-badges', methods=['POST'])
+def update_badges():
+    """Stream Databaseから最新バッジ情報をチェック（開発環境用）"""
+    try:
+        if badge_updater:
+            # 手動でバッジチェックを実行
+            badge_updater.check_for_new_badges()
+            
+            result = {
+                'success': True,
+                'timestamp': datetime.now().isoformat(),
+                'message': 'バッジ情報の更新チェックが完了しました',
+                'new_badges_count': len(badge_updater.new_badges_queue),
+                'new_badges': [badge['id'] for badge in badge_updater.new_badges_queue[-10:]]  # 最新10個
+            }
+            
+            return jsonify(result)
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Badge updater not initialized'
+            }), 500
+            
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'Server error: {str(e)}'
+        }), 500
+
 @app.route('/<path:path>')
 def serve_static(path):
     """静的ファイルを配信"""

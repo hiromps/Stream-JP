@@ -1066,32 +1066,32 @@ async function updateBadgeData() {
         updateBtn.disabled = true;
         updateBtn.innerHTML = '🔄 更新中...';
         
-        // Stream Databaseの最新バッジをチェック
-        const response = await fetch('https://www.streamdatabase.com/twitch/global-badges');
+        // 自分のAPIエンドポイント経由でStream Databaseをチェック
+        const response = await fetch(`${BASE_URL}/api/update-badges`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        
         if (!response.ok) {
-            throw new Error('Stream Database API error');
+            throw new Error(`API error: ${response.status}`);
         }
         
-        const html = await response.text();
+        const data = await response.json();
         
-        // 新しいバッジを検出（簡易的な実装）
-        const badgeMatches = html.match(/\/twitch\/global-badges\/([^\/]+)\/1/g);
-        if (badgeMatches) {
-            const newBadges = badgeMatches.map(match => 
-                match.replace('/twitch/global-badges/', '').replace('/1', '')
-            );
-            
-            // 既知のバッジと比較
-            const knownBadges = Object.keys(badgeAvailabilityPeriods);
-            const unknownBadges = newBadges.filter(badge => !knownBadges.includes(badge));
-            
-            if (unknownBadges.length > 0) {
-                console.log('新しいバッジが見つかりました:', unknownBadges);
-                alert(`新しいバッジが見つかりました:\n${unknownBadges.join('\n')}\n\n詳細な更新はCLAUDE.mdの手順に従って手動で行ってください。`);
-            } else {
-                console.log('新しいバッジはありませんでした');
-                alert('新しいバッジは見つかりませんでした。');
-            }
+        if (!data.success) {
+            throw new Error(data.error || 'Unknown error');
+        }
+        
+        console.log('バッジ更新結果:', data);
+        
+        // 結果を表示
+        if (data.new_badges_count > 0) {
+            const newBadgesList = data.new_badges.join('\n• ');
+            alert(`🎉 ${data.new_badges_count}個の新しいバッジが見つかりました！\n\n• ${newBadgesList}\n\n詳細な更新はCLAUDE.mdの手順に従って手動で行ってください。`);
+        } else {
+            alert(`✅ ${data.message}\n\n現在 ${data.total_badges_found} 個のバッジが登録されています。`);
         }
         
         // バッジリストを再読み込み
@@ -1112,6 +1112,6 @@ async function updateBadgeData() {
             updateBtn.disabled = false;
         }, 3000);
         
-        alert('バッジ情報の更新に失敗しました。ネットワーク接続を確認してください。');
+        alert(`バッジ情報の更新に失敗しました。\n\nエラー: ${error.message}\n\nしばらく時間をおいてから再試行してください。`);
     }
 }
