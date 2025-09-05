@@ -94,13 +94,20 @@ def enhance_badges_with_timestamps(twitch_data):
     """Stream Databaseのデータでバッジにタイムスタンプを追加（正確な追加日のみ）"""
     # Stream Database公式サイトから取得した正確な追加日データベース（2025年7月更新版）
     badge_timestamps = {
-        # 2025年の新しいバッジ（Stream Databaseから取得した正確な追加日）
+        # 2025年の最新バッジ（Stream Databaseから取得した正確な追加日）
+        'zevent25': '2025-09-04T00:00:00.000Z',  # ZEVENT 2025
+        'hornet': '2025-09-03T00:00:00.000Z',  # Hollow Knight: Silksong
+        'subtember-2025': '2025-09-03T00:00:00.000Z',  # SUBtember 2025
+        'gears-of-war-superfan-badge': '2025-08-29T00:00:00.000Z',  # Gears of War Superfan
+        'path-of-exile-2-badge': '2025-08-27T00:00:00.000Z',  # Chaos Orb (Path of Exile 2)
+        
+        # 2025年の既存バッジ（Stream Databaseから取得した正確な追加日）
+        'evo-2025': '2025-07-31T00:00:00.000Z',
+        'la-velada-v-badge': '2025-07-23T00:00:00.000Z',
+        'legendus': '2025-06-28T06:15:55.000Z',
         'league-of-legends-mid-season-invitational-2025---grey': '2025-06-24T01:11:19.640Z',
         'league-of-legends-mid-season-invitational-2025---purple': '2025-06-24T01:11:19.640Z',
         'league-of-legends-mid-season-invitational-2025---blue': '2025-06-24T01:11:19.640Z',
-        'legendus': '2025-06-28T06:15:55.000Z',
-        'la-velada-v-badge': '2025-07-23T00:00:00.000Z',
-        'evo-2025': '2025-07-31T00:00:00.000Z',
         'borderlands-4-badge---ripper': '2025-06-20T22:01:18.225Z',
         'borderlands-4-badge---vault-symbol': '2025-06-20T22:01:18.225Z',
         'bot-badge': '2025-06-09T23:43:23.947Z',
