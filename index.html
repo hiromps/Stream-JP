@@ -86,6 +86,13 @@
                     <option value="newest" data-i18n="sort.newest" selected>新しい順</option>
                     <option value="oldest" data-i18n="sort.oldest">古い順</option>
                 </select>
+                
+                <!-- 管理者用更新ボタン (Ctrl+Alt+U で表示/非表示) -->
+                <div class="admin-controls" id="admin-controls" style="display: none; margin-left: auto;">
+                    <button id="update-badges-btn" class="admin-btn" title="Stream Databaseから最新バッジ情報を取得">
+                        🔄 バッジ更新
+                    </button>
+                </div>
             </div>
             
             <div id="badge-container" class="badge-container">

@@ -197,6 +197,36 @@ class StreamDashboard {
                 start: '2024-09-06T18:00:00Z',
                 end: '2024-09-08T23:59:59Z',
                 description: 'ZEVENT 2024 charity marathon September 6-8, 2024'
+            },
+            'zevent25': {
+                type: 'time-limited',
+                start: '2025-09-04T16:00:00Z',
+                end: '2025-09-07T00:00:00Z',
+                description: 'ZEVENT 2025 charity marathon September 4-7, 2025'
+            },
+            'hornet': {
+                type: 'time-limited',
+                start: '2025-09-04T14:00:00Z',
+                end: '2025-09-13T06:59:00Z',
+                description: 'Hollow Knight: Silksong launch event September 4-13, 2025'
+            },
+            'subtember-2025': {
+                type: 'time-limited',
+                start: '2025-08-29T17:00:00Z',
+                end: '2025-10-01T17:00:00Z',
+                description: 'SUBtember 2025 August 29 - October 1, 2025'
+            },
+            'gears-of-war-superfan-badge': {
+                type: 'time-limited',
+                start: '2025-08-25T07:00:00Z',
+                end: '2025-08-26T19:00:00Z',
+                description: 'Gears of War: Reloaded Superfan August 25-26, 2025'
+            },
+            'path-of-exile-2-badge': {
+                type: 'time-limited',
+                start: '2025-08-29T07:00:00Z',
+                end: '2025-09-15T06:59:00Z',
+                description: 'Path of Exile II launch promotion August 29 - September 15, 2025'
             }
         };
     }

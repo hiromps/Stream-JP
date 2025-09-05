@@ -184,6 +184,36 @@ const badgeAvailabilityPeriods = {
         start: '2024-09-06T18:00:00Z',
         end: '2024-09-08T23:59:59Z',
         description: 'ZEVENT 2024 charity marathon September 6-8, 2024'
+    },
+    'zevent25': {
+        type: 'time-limited',
+        start: '2025-09-04T16:00:00Z',
+        end: '2025-09-07T00:00:00Z',
+        description: 'ZEVENT 2025 charity marathon September 4-7, 2025'
+    },
+    'hornet': {
+        type: 'time-limited',
+        start: '2025-09-04T14:00:00Z',
+        end: '2025-09-13T06:59:00Z',
+        description: 'Hollow Knight: Silksong launch event September 4-13, 2025'
+    },
+    'subtember-2025': {
+        type: 'time-limited',
+        start: '2025-08-29T17:00:00Z',
+        end: '2025-10-01T17:00:00Z',
+        description: 'SUBtember 2025 August 29 - October 1, 2025'
+    },
+    'gears-of-war-superfan-badge': {
+        type: 'time-limited',
+        start: '2025-08-25T07:00:00Z',
+        end: '2025-08-26T19:00:00Z',
+        description: 'Gears of War: Reloaded Superfan August 25-26, 2025'
+    },
+    'path-of-exile-2-badge': {
+        type: 'time-limited',
+        start: '2025-08-29T07:00:00Z',
+        end: '2025-09-15T06:59:00Z',
+        description: 'Path of Exile II launch promotion August 29 - September 15, 2025'
     }
 };
 
@@ -996,4 +1026,92 @@ document.addEventListener('DOMContentLoaded', () => {
     // バッジを読み込む
     loadGlobalBadges();
     initializeSortControls();
+    initializeAdminControls();
 });
+
+// 管理者用コントロールの初期化
+function initializeAdminControls() {
+    let isAdminMode = false;
+    
+    // Ctrl+Alt+U で管理者モード切り替え
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.altKey && e.key === 'u') {
+            e.preventDefault();
+            isAdminMode = !isAdminMode;
+            const adminControls = document.getElementById('admin-controls');
+            adminControls.style.display = isAdminMode ? 'flex' : 'none';
+            
+            if (isAdminMode) {
+                console.log('管理者モードが有効になりました');
+            }
+        }
+    });
+    
+    // 更新ボタンのクリックイベント
+    const updateBtn = document.getElementById('update-badges-btn');
+    if (updateBtn) {
+        updateBtn.addEventListener('click', async () => {
+            await updateBadgeData();
+        });
+    }
+}
+
+// Stream Databaseから最新バッジ情報を取得して更新
+async function updateBadgeData() {
+    const updateBtn = document.getElementById('update-badges-btn');
+    const originalText = updateBtn.innerHTML;
+    
+    try {
+        // ボタンを無効化してローディング状態に
+        updateBtn.disabled = true;
+        updateBtn.innerHTML = '🔄 更新中...';
+        
+        // Stream Databaseの最新バッジをチェック
+        const response = await fetch('https://www.streamdatabase.com/twitch/global-badges');
+        if (!response.ok) {
+            throw new Error('Stream Database API error');
+        }
+        
+        const html = await response.text();
+        
+        // 新しいバッジを検出（簡易的な実装）
+        const badgeMatches = html.match(/\/twitch\/global-badges\/([^\/]+)\/1/g);
+        if (badgeMatches) {
+            const newBadges = badgeMatches.map(match => 
+                match.replace('/twitch/global-badges/', '').replace('/1', '')
+            );
+            
+            // 既知のバッジと比較
+            const knownBadges = Object.keys(badgeAvailabilityPeriods);
+            const unknownBadges = newBadges.filter(badge => !knownBadges.includes(badge));
+            
+            if (unknownBadges.length > 0) {
+                console.log('新しいバッジが見つかりました:', unknownBadges);
+                alert(`新しいバッジが見つかりました:\n${unknownBadges.join('\n')}\n\n詳細な更新はCLAUDE.mdの手順に従って手動で行ってください。`);
+            } else {
+                console.log('新しいバッジはありませんでした');
+                alert('新しいバッジは見つかりませんでした。');
+            }
+        }
+        
+        // バッジリストを再読み込み
+        await loadGlobalBadges();
+        
+        updateBtn.innerHTML = '✅ 更新完了';
+        setTimeout(() => {
+            updateBtn.innerHTML = originalText;
+            updateBtn.disabled = false;
+        }, 2000);
+        
+    } catch (error) {
+        console.error('バッジ更新エラー:', error);
+        updateBtn.innerHTML = '❌ 更新失敗';
+        
+        setTimeout(() => {
+            updateBtn.innerHTML = originalText;
+            updateBtn.disabled = false;
+        }, 3000);
+        
+        alert('バッジ情報の更新に失敗しました。ネットワーク接続を確認してください。');
+    }
+}

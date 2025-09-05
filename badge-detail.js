@@ -184,6 +184,36 @@ const badgeAvailabilityPeriods = {
         start: '2024-09-06T18:00:00Z',
         end: '2024-09-08T23:59:59Z',
         description: 'ZEVENT 2024 charity marathon September 6-8, 2024'
+    },
+    'zevent25': {
+        type: 'time-limited',
+        start: '2025-09-04T16:00:00Z',
+        end: '2025-09-07T00:00:00Z',
+        description: 'ZEVENT 2025 charity marathon September 4-7, 2025'
+    },
+    'hornet': {
+        type: 'time-limited',
+        start: '2025-09-04T14:00:00Z',
+        end: '2025-09-13T06:59:00Z',
+        description: 'Hollow Knight: Silksong launch event September 4-13, 2025'
+    },
+    'subtember-2025': {
+        type: 'time-limited',
+        start: '2025-08-29T17:00:00Z',
+        end: '2025-10-01T17:00:00Z',
+        description: 'SUBtember 2025 August 29 - October 1, 2025'
+    },
+    'gears-of-war-superfan-badge': {
+        type: 'time-limited',
+        start: '2025-08-25T07:00:00Z',
+        end: '2025-08-26T19:00:00Z',
+        description: 'Gears of War: Reloaded Superfan August 25-26, 2025'
+    },
+    'path-of-exile-2-badge': {
+        type: 'time-limited',
+        start: '2025-08-29T07:00:00Z',
+        end: '2025-09-15T06:59:00Z',
+        description: 'Path of Exile II launch promotion August 29 - September 15, 2025'
     }
 };
 
@@ -1104,6 +1134,142 @@ const badgeObtainMethods = {
             ],
             availability: 'unavailable',
             url: 'https://www.streamdatabase.com/twitch/global-badges/la-velada-v-badge/1'
+        }
+    },
+    'zevent25': {
+        ja: {
+            title: 'ZEVENT25',
+            description: 'ZEVENT 2025（2025年9月4-7日）で入手できました。ZeratoRが主催するフランス最大のチャリティストリーミングマラソンイベントの最新版です。',
+            requirements: [
+                '2025年9月4日16:00 - 9月7日00:00（UTC）の期間中に参加',
+                'ZEVENT25の参加チャンネルで1時間の配信を視聴',
+                '複数のチャリティ団体を支援する寄付が推奨（バッジ取得に必須ではない）',
+                'Twitchアカウントでログイン済み'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/zevent25/1'
+        },
+        en: {
+            title: 'ZEVENT25',
+            description: 'Obtained during ZEVENT 2025 (September 4-7, 2025). The latest edition of France\'s biggest charity streaming marathon organized by ZeratoR.',
+            requirements: [
+                'Watch during September 4, 16:00 - September 7, 00:00 (UTC), 2025',
+                'Watch 1 hour of any participating ZEVENT25 channel',
+                'Donations to supported charities encouraged (not required for badge)',
+                'Must be logged in with Twitch account'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/zevent25/1'
+        }
+    },
+    'hornet': {
+        ja: {
+            title: 'Hornet - Hollow Knight: Silksong',
+            description: 'Hollow Knight: Silksong ローンチ期間中（2025年9月4-13日）にHollow Knight: Silksongカテゴリの配信者に購読することで入手できました。',
+            requirements: [
+                '2025年9月4日14:00 - 9月13日06:59（UTC）の期間中',
+                'Hollow Knight: Silksongカテゴリで配信中のチャンネルに購読',
+                'またはギフト購読を送る',
+                'Prime購読は対象外',
+                'ゲームの発売週記念バッジ'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/hornet/1'
+        },
+        en: {
+            title: 'Hornet - Hollow Knight: Silksong',
+            description: 'Obtained by subscribing to streamers in Hollow Knight: Silksong category during game launch week (September 4-13, 2025).',
+            requirements: [
+                'Subscribe during September 4, 14:00 - September 13, 06:59 (UTC), 2025',
+                'Subscribe to channels streaming in Hollow Knight: Silksong category',
+                'Or gift subscriptions to eligible channels',
+                'Prime subscriptions do NOT count',
+                'Game launch week commemorative badge'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/hornet/1'
+        }
+    },
+    'subtember-2025': {
+        ja: {
+            title: 'SUBtember 2025',
+            description: 'SUBtember 2025期間中（2025年8月29日 - 10月1日）に購読、ギフト購読、またはBitsを使用することで入手できました。',
+            requirements: [
+                '2025年8月29日17:00 - 10月1日17:00（UTC）の期間中',
+                'いずれかのTwitchチャンネルに購読（Prime購読は対象外）',
+                'またはギフト購読を送る',
+                'またはBitsを使用する',
+                '購読とBitsの割引キャンペーン期間'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/subtember-2025/1'
+        },
+        en: {
+            title: 'SUBtember 2025',
+            description: 'Obtained by subscribing, gifting subscriptions, or using bits on any Twitch channel during SUBtember 2025 (August 29 - October 1, 2025).',
+            requirements: [
+                'Participate during August 29, 17:00 - October 1, 17:00 (UTC), 2025',
+                'Subscribe to any channel (Prime subscriptions do NOT count)',
+                'Or gift subscriptions to any channel',
+                'Or use bits on any channel',
+                'Special discount period for subscriptions and bits'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/subtember-2025/1'
+        }
+    },
+    'gears-of-war-superfan-badge': {
+        ja: {
+            title: 'Gears of War Superfan Badge',
+            description: 'Gears of War: Reloaded発表イベント期間中（2025年8月25-26日）にGears of War: Reloaded Waiting Roomカテゴリで配信を視聴または配信することで入手できました。',
+            requirements: [
+                '2025年8月25日07:00 - 8月26日19:00（UTC）の期間中',
+                'Gears of War: Reloaded Waiting Roomカテゴリで配信を視聴または配信',
+                'Stream Together機能を有効にしている必要あり',
+                'ゲーム発表イベント記念バッジ'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/gears-of-war-superfan-badge/1'
+        },
+        en: {
+            title: 'Gears of War Superfan Badge',
+            description: 'Obtained by watching or streaming in the "Gears of War: Reloaded Waiting Room" category during the announcement event (August 25-26, 2025).',
+            requirements: [
+                'Participate during August 25, 07:00 - August 26, 19:00 (UTC), 2025',
+                'Watch or stream in "Gears of War: Reloaded Waiting Room" category',
+                'Required to have "Streaming Together" feature enabled',
+                'Game announcement event commemorative badge'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/gears-of-war-superfan-badge/1'
+        }
+    },
+    'path-of-exile-2-badge': {
+        ja: {
+            title: 'Chaos Orb - Path of Exile 2',
+            description: 'Path of Exile 2: The Third Edict発売促進期間中（2025年8月29日 - 9月15日）にPath of Exile IIカテゴリの配信者に購読することで入手できました。',
+            requirements: [
+                '2025年8月29日07:00 - 9月15日06:59（UTC）の期間中',
+                'Path of Exile IIカテゴリで配信中のチャンネルに購読',
+                'またはギフト購読を送る',
+                'Prime購読は対象外',
+                'SUBtember 2025期間と重複するため、一度の購読で2つのバッジ獲得可能'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/path-of-exile-2-badge/1'
+        },
+        en: {
+            title: 'Chaos Orb - Path of Exile 2',
+            description: 'Obtained by subscribing to streamers in Path of Exile II category during "The Third Edict" launch promotion (August 29 - September 15, 2025).',
+            requirements: [
+                'Subscribe during August 29, 07:00 - September 15, 06:59 (UTC), 2025',
+                'Subscribe to channels streaming Path of Exile II',
+                'Or gift subscriptions to eligible channels',
+                'Prime subscriptions do NOT count',
+                'Overlaps with SUBtember 2025 - one subscription can earn both badges'
+            ],
+            availability: 'unavailable',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/path-of-exile-2-badge/1'
         }
     },
     'zevent-2024': {

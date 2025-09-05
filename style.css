@@ -524,6 +524,65 @@ footer p {
     border: 2px dashed #8b5cf6;
 }
 
+/* 管理者用コントロール */
+.admin-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.admin-btn {
+    background: linear-gradient(135deg, #9146ff, #772ce8);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 4px rgba(145, 70, 255, 0.3);
+}
+
+.admin-btn:hover {
+    background: linear-gradient(135deg, #a970ff, #8b42ff);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(145, 70, 255, 0.4);
+}
+
+.admin-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(145, 70, 255, 0.3);
+}
+
+.admin-btn:disabled {
+    background: #53535f;
+    color: #adadb8;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 管理者コントロールのアニメーション */
+.admin-controls {
+    animation: slideInFromRight 0.3s ease;
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 @media (max-width: 480px) {
     .badge-container {
         grid-template-columns: 1fr;
@@ -537,5 +596,15 @@ footer p {
     .badge-availability {
         font-size: 0.7em;
         padding: 3px 6px;
+    }
+    
+    .sort-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .admin-controls {
+        margin-left: 0;
+        justify-content: flex-start;
     }
 }

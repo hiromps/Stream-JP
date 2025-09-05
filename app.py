@@ -207,7 +207,13 @@ class BadgeAutoUpdater:
                 self.known_badges = set(data.get('badges', []))
                 self.last_checked = datetime.fromisoformat(data.get('last_checked', datetime.now().isoformat()))
         except FileNotFoundError:
-            self.known_badges = set()
+            # 初回起動時には最新の5つのバッジを既知として設定
+            self.known_badges = {
+                'zevent25', 'hornet', 'subtember-2025', 
+                'gears-of-war-superfan-badge', 'path-of-exile-2-badge',
+                'zevent-2024', 'la-velada-v-badge', 'evo-2025',
+                'share-the-love', 'speedons-5-badge', 'clips-leader'
+            }
             self.save_known_badges()
     
     def save_known_badges(self):
