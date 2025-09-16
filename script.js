@@ -185,6 +185,12 @@ const badgeAvailabilityPeriods = {
         end: '2025-10-05T18:59:00Z',
         description: 'VCT Champions Paris 2025 - SUBtember September 12 - October 5, 2025'
     },
+    'valorant-paris-2025': {
+        type: 'time-limited',
+        start: '2025-09-12T17:00:00Z',
+        end: '2025-10-05T18:59:00Z',
+        description: 'VCT Champions Paris 2025 - SUBtember September 12 - October 5, 2025'
+    },
     'zevent-2024': {
         type: 'time-limited',
         start: '2024-09-06T18:00:00Z',

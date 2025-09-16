@@ -185,6 +185,12 @@ const badgeAvailabilityPeriods = {
         end: '2025-10-05T18:59:00Z',
         description: 'VCT Champions Paris 2025 - SUBtember September 12 - October 5, 2025'
     },
+    'valorant-paris-2025': {
+        type: 'time-limited',
+        start: '2025-09-12T17:00:00Z',
+        end: '2025-10-05T18:59:00Z',
+        description: 'VCT Champions Paris 2025 - SUBtember September 12 - October 5, 2025'
+    },
     'zevent-2024': {
         type: 'time-limited',
         start: '2024-09-06T18:00:00Z',
@@ -1170,6 +1176,36 @@ const badgeObtainMethods = {
             ],
             availability: 'available',
             url: 'https://www.streamdatabase.com/twitch/global-badges/valorant-2025/1'
+        }
+    },
+    'valorant-paris-2025': {
+        ja: {
+            title: 'VCT Paris 2025',
+            description: 'VCT Paris 2025（VALORANTチャンピオンズツアー パリ大会）の専用バッジ（2025年9月12日〜10月5日）。VALORANTカテゴリーで有料サブスクリプションまたはギフトサブが必要です。',
+            requirements: [
+                '2025年9月12日17:00 - 10月5日18:59（UTC）の期間中に参加',
+                'VALORANTカテゴリーのストリーマーに有料サブスクリプションまたはギフトサブ',
+                'Prime Gamingサブスクリプションは対象外',
+                'SUBtemberキャンペーンで30%割引適用（10月1日まで）',
+                '大会配信でも通常配信でも、VALORANTカテゴリーであれば対象',
+                'サブスクリプション完了後、自動的にバッジが付与される'
+            ],
+            availability: 'available',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/vct-paris-2025/1'
+        },
+        en: {
+            title: 'VCT Paris 2025',
+            description: 'VCT Paris 2025 (VALORANT Champions Tour Paris) exclusive badge (September 12 - October 5, 2025). Requires paid subscription or gift sub in the VALORANT category.',
+            requirements: [
+                'Participate during September 12, 17:00 - October 5, 18:59 (UTC), 2025',
+                'Purchase or gift a subscription to any streamer in the VALORANT category',
+                'Prime Gaming subscriptions do NOT count',
+                '30% discount available during SUBtember (until October 1)',
+                'Valid for any VALORANT category stream, tournament or regular',
+                'Badge granted automatically after subscription completion'
+            ],
+            availability: 'available',
+            url: 'https://www.streamdatabase.com/twitch/global-badges/vct-paris-2025/1'
         }
     },
     'zevent25': {
