@@ -1180,31 +1180,31 @@ const badgeObtainMethods = {
     },
     'valorant-paris-2025': {
         ja: {
-            title: 'VCT Paris 2025',
-            description: 'VCT Paris 2025（VALORANTチャンピオンズツアー パリ大会）の専用バッジ（2025年9月12日〜10月5日）。VALORANTカテゴリーで有料サブスクリプションまたはギフトサブが必要です。',
+            title: 'VCT Champions Paris 2025',
+            description: 'VALORANT Champions 2025パリ大会の記念バッジ。世界最高峰のVALORANT大会で、16チームが賞金総額225万ドルをかけて競い合いました。Accor ArenaとLes Arènes de Grand Paris Sudで24日間開催された史上最大規模の大会です。',
             requirements: [
                 '2025年9月12日17:00 - 10月5日18:59（UTC）の期間中に参加',
                 'VALORANTカテゴリーのストリーマーに有料サブスクリプションまたはギフトサブ',
                 'Prime Gamingサブスクリプションは対象外',
                 'SUBtemberキャンペーンで30%割引適用（10月1日まで）',
-                '大会配信でも通常配信でも、VALORANTカテゴリーであれば対象',
-                'サブスクリプション完了後、自動的にバッジが付与される'
+                '参加16チーム：G2、Bilibili Gaming、Team Liquid、Paper Rex、NRG、Sentinels等',
+                '優勝賞金100万ドル、総賞金225万ドルの世界大会記念バッジ'
             ],
-            availability: 'available',
+            availability: 'unavailable',
             url: 'https://www.streamdatabase.com/twitch/global-badges/vct-paris-2025/1'
         },
         en: {
-            title: 'VCT Paris 2025',
-            description: 'VCT Paris 2025 (VALORANT Champions Tour Paris) exclusive badge (September 12 - October 5, 2025). Requires paid subscription or gift sub in the VALORANT category.',
+            title: 'VCT Champions Paris 2025',
+            description: 'Commemorative badge for VALORANT Champions 2025 Paris. The pinnacle VALORANT tournament with 16 teams competing for $2.25M prize pool. Held for 24 days at Accor Arena and Les Arènes de Grand Paris Sud.',
             requirements: [
                 'Participate during September 12, 17:00 - October 5, 18:59 (UTC), 2025',
                 'Purchase or gift a subscription to any streamer in the VALORANT category',
                 'Prime Gaming subscriptions do NOT count',
                 '30% discount available during SUBtember (until October 1)',
-                'Valid for any VALORANT category stream, tournament or regular',
-                'Badge granted automatically after subscription completion'
+                '16 teams competed: G2, Bilibili Gaming, Team Liquid, Paper Rex, NRG, Sentinels, etc.',
+                '$1M first place prize, $2.25M total prize pool championship badge'
             ],
-            availability: 'available',
+            availability: 'unavailable',
             url: 'https://www.streamdatabase.com/twitch/global-badges/vct-paris-2025/1'
         }
     },
